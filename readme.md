@@ -1,8 +1,18 @@
 # A Template for TypeScript Projects using React, Redux, and Fabric
 
-This project is a simple template project developed by Clemex Technologies for bootstrapping new applications. We started from the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter). 
+This project is a template project developed by Clemex Technologies for bootstrapping new react/redux applications in TypeScript. We started from the [TypeScript React Starter] from Microsoft. (https://github.com/Microsoft/TypeScript-React-Starter). 
+
+To understand this project and how it is configured please read:
+1. [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter). 
+2. [Create React App User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
+
+# Building and Running the Project
+
+The command `npm run start` from a terminal (or shell) will compile and launch the project in your browser at the location `http://localhost:3000/` with a watcher which will rebuild the project whenever any source file is changed. 
 
 ### Libraries
+
+We are using the following libraries: 
 
 * React
 * Redux - without react-redux module
@@ -10,6 +20,8 @@ This project is a simple template project developed by Clemex Technologies for b
 * Material UI
 
 ### Development Tools
+
+We are using the following development tools:
 
 * Webpack
 * Babel
@@ -26,7 +38,7 @@ Eventually we want to use:
 * Yarn
 * Enzyme
 
-# Principles
+# Development Principles
 
 The principle we are developing from are:
 * DRY (Don't Repeat Yourself)
@@ -39,7 +51,6 @@ Also see the [Zen of Python](https://www.python.org/dev/peps/pep-0020/).
 # Reading List
 
 The following are a list of interesting articles related to the technology stack and the intersections of different technologies.  
-
 ## React 
 
 * [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
@@ -56,6 +67,7 @@ The following are a list of interesting articles related to the technology stack
 
 ## React with TypeScript
 
+* [React with TypeScript](https://github.com/Mercateo/react-with-typescript)
 * [TypeScript, React, and Redux](http://www.mattgreer.org/articles/typescript-react-and-redux/)
 * [React and Redux with TypeScript guide](https://github.com/piotrwitek/react-redux-typescript-guide)
 * [TypeScript React Conversion Guide](https://github.com/Microsoft/TypeScript-React-Conversion-Guide)
@@ -68,3 +80,9 @@ The following are a list of interesting articles related to the technology stack
 * [TypeScript Tutorial](https://www.typescriptlang.org/docs/tutorial.html)
 * [TypeScript Deep Dive](https://basarat.gitbooks.io/typescript/content/docs/getting-started.html)
 * [TypeScript Advanced Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
+
+## FAQ
+
+Q: Can I have support for [Hot Reloading] for React(https://gaearon.github.io/react-hot-loader/)?
+
+A: There is a project that [demos this on Github](https://github.com/Glavin001/react-hot-ts) but the [issues reported](https://github.com/Glavin001/react-hot-ts/issues) make me think it is not a good idea. If you want to experiment with this I suggest creating a branch and trying it out. You will have to run [`npm run eject` from the create-react-app tool](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) to abandon using the scripts for managing the configuration. 
