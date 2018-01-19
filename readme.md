@@ -34,16 +34,12 @@ We are using the following development tools:
 * Redux DevTools for Chrome
 * Visual Studio Code
 
-Eventually we want to use:
-* Yarn
-* Enzyme
-
 # Development Principles
 
 The principle we are developing from are:
 * DRY (Don't Repeat Yourself)
 * YAGNI (You Aren't Going to Need It)
-* KISS (Keep it stupidly simple)
+* KISS (Keep it Stupidly Simple)
 * Don't make me think
 
 Also see the [Zen of Python](https://www.python.org/dev/peps/pep-0020/). 
@@ -68,12 +64,20 @@ The following are a list of interesting articles related to the technology stack
 ## React with TypeScript
 
 * [React with TypeScript](https://github.com/Mercateo/react-with-typescript)
-* [TypeScript, React, and Redux](http://www.mattgreer.org/articles/typescript-react-and-redux/)
 * [React and Redux with TypeScript guide](https://github.com/piotrwitek/react-redux-typescript-guide)
 * [TypeScript React Conversion Guide](https://github.com/Microsoft/TypeScript-React-Conversion-Guide)
 * [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter)
 * [React JavaScript to TypeScript Transform](https://github.com/lyft/react-javascript-to-typescript-transform)
-* [Getting Started with React and TypeScript](https://javascriptplayground.com/react-typescript/)
+* [Getting Started with React and TypeScript](https://javascriptplayground.com/react-typescript/)types/react-redux
+* [React & Redux in TypeScript - Component Typing Patterns](https://piotrwitek.github.io/react-redux-typescript-guide/)
+
+For trouble-shooting:
+
+* [TypeScript, React, and Redux](http://www.mattgreer.org/articles/typescript-react-and-redux/)
+
+## Redux with TypeScript
+
+* [Typesafe Action Creation for Redux](https://github.com/piotrwitek/typesafe-actions)
 
 ## TypeScript
 
@@ -83,6 +87,6 @@ The following are a list of interesting articles related to the technology stack
 
 ## FAQ
 
-Q: Can I have support for [Hot Reloading] for React(https://gaearon.github.io/react-hot-loader/)?
+Q: Can I have support for [Hot Reloading](https://gaearon.github.io/react-hot-loader/) for React?
 
 A: There is a project that [demos this on Github](https://github.com/Glavin001/react-hot-ts) but the [issues reported](https://github.com/Glavin001/react-hot-ts/issues) make me think it is not a good idea. If you want to experiment with this I suggest creating a branch and trying it out. You will have to run [`npm run eject` from the create-react-app tool](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) to abandon using the scripts for managing the configuration. 
