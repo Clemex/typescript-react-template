@@ -70,7 +70,7 @@ The following are a list of interesting articles related to the technology stack
 * [TypeScript React Conversion Guide](https://github.com/Microsoft/TypeScript-React-Conversion-Guide)
 * [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter)
 * [React JavaScript to TypeScript Transform](https://github.com/lyft/react-javascript-to-typescript-transform)
-* [Getting Started with React and TypeScript](https://javascriptplayground.com/react-typescript/)types/react-redux
+* [Getting Started with React and TypeScript](https://javascriptplayground.com/react-typescript/)
 
 For trouble-shooting:
 
