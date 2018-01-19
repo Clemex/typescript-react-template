@@ -91,3 +91,7 @@ For trouble-shooting:
 Q: Can I have support for [Hot Reloading](https://gaearon.github.io/react-hot-loader/) for React?
 
 A: There is a project that [demos this on Github](https://github.com/Glavin001/react-hot-ts) but the [issues reported](https://github.com/Glavin001/react-hot-ts/issues) make me think it is not a good idea. If you want to experiment with this I suggest creating a branch and trying it out. You will have to run [`npm run eject` from the create-react-app tool](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) to abandon using the scripts for managing the configuration. 
+
+Q: Why is fabric.js not being installed as an node module via NPM?
+
+A: Installing it brings in a lot of dependencies and complexity to the build process. We use it only in browser applications, and the main fabric.js file is self-contained and working well. 
