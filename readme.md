@@ -2,9 +2,10 @@
 
 This project is a template project developed by Clemex Technologies for bootstrapping new react/redux applications in TypeScript. We started from the [TypeScript React Starter] from Microsoft. (https://github.com/Microsoft/TypeScript-React-Starter). 
 
-To understand this project and how it is configured please read:
+Assuming a background in React and Redux please read the following articles in order:
 1. [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter). 
 2. [Create React App User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
+3. [Static Typing in React & Redux using TypeScript](https://github.com/piotrwitek/react-redux-typescript-guide)
 
 # Building and Running the Project
 
@@ -69,7 +70,6 @@ The following are a list of interesting articles related to the technology stack
 * [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter)
 * [React JavaScript to TypeScript Transform](https://github.com/lyft/react-javascript-to-typescript-transform)
 * [Getting Started with React and TypeScript](https://javascriptplayground.com/react-typescript/)types/react-redux
-* [React & Redux in TypeScript - Component Typing Patterns](https://piotrwitek.github.io/react-redux-typescript-guide/)
 
 For trouble-shooting:
 
