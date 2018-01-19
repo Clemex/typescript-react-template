@@ -24,7 +24,7 @@ class App extends React.Component {
 
         <CallbackButton 
           callback={callback} 
-          label="Hey buddy!"
+          label="Press me!"
         />
       </div>
     );
