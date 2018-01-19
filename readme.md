@@ -15,18 +15,19 @@ The command `npm run start` from a terminal (or shell) will compile and launch t
 
 We are using the following libraries: 
 
-* React
-* Redux - without react-redux module
-* Fabric.js
-* Material UI
+* [React](https://github.com/Clemex/typescript-react-template)
+* [Redux](https://redux.js.org/)
+* [Fabric.js](fabricjs.com)
+* [Material UI](http://www.material-ui.com/)
+* [Redux Form](https://redux-form.com/7.2.1/)
 
 ### Development Tools
 
 We are using the following development tools:
 
+* TypeScript
 * Webpack
 * Babel
-* TypeScript
 * TS-Lint
 * Node
 * NPM 
