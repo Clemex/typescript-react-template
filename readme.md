@@ -56,7 +56,7 @@ The following are a list of interesting articles related to the technology stack
 * [Flux in Depth Overview](http://facebook.github.io/flux/docs/in-depth-overview.html#content)
 
 ## React with Redux
-
+* [Redux Tutorials (Youtube)](https://www.youtube.com/watch?v=1w-oQ-i1XB8&list=PLoYCgNOIyGADILc3iUJzygCqC8Tt3bRXt)
 * [Redux used with React](http://www.mattgreer.org/articles/typescript-react-and-redux/)
 
 ## Redux With Fabric
