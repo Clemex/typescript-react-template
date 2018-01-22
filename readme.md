@@ -25,16 +25,17 @@ We are using the following libraries:
 
 We are using the following development tools:
 
-* TypeScript
-* Webpack
-* Babel
-* TS-Lint
-* Node
-* NPM 
-* Jest
-* create-react-app 
-* Redux DevTools for Chrome
-* Visual Studio Code
+* [TypeScript](https://www.typescriptlang.org/) : Statically typed Javascript that compiles to plain Javascript
+* [TS-Lint](https://palantir.github.io/tslint/) : Linter for the TypeScript language
+* [Webpack](https://webpack.js.org/) : Let you bundle JavaScript files for usage in a browser (needed for React)
+* [Node](https://nodejs.org) : JavaScript runtime built on Chrome's V8 JavaScript engine
+* [NPM](https://www.npmjs.com/) : Node Package Manager 
+* [Babel](https://babeljs.io/) :  Tool that helps you write code in the latest version of JavaScript
+* [Jest](https://facebook.github.io/jest/) : Test all JavaScript code including React applications
+* [create-react-app](https://github.com/facebook/create-react-app) : Bootstrap React app
+* [React Developer Tools for Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+* [Redux DevTools for Chrome](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+* [Visual Studio Code](https://code.visualstudio.com/) : Source code editor by Microsoft for Windows, Linux and macOS
 
 # Development Principles
 
