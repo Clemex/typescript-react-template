@@ -1,5 +1,8 @@
 import * as React from 'react';
 import './App.css';
+import { Demo } from './components/demo/Demo';
+
+/*
 import Child from './Child';
 import { CallbackButton } from './CallbackButton';
 
@@ -21,14 +24,18 @@ class App extends React.Component {
         
         </p>
         <Child />
-
+        <p/>
         <CallbackButton 
           callback={callback} 
-          label="Press me!"
+          label="Press me, I am a button!"
         />
       </div>
     );
   }
-}
+}*/
 
-export default App;
+export default class App extends React.Component {
+  render() {
+    return (<Demo/>);
+  }
+}
