@@ -89,12 +89,16 @@ For trouble-shooting:
 * [TypeScript Deep Dive](https://basarat.gitbooks.io/typescript/content/docs/getting-started.html)
 * [TypeScript Advanced Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
 
-## FAQ
+# Examples
 
-Q: Can I have support for [Hot Reloading](https://gaearon.github.io/react-hot-loader/) for React?
+* [Counter](https://github.com/Leyka/learning-react/tree/master/react-redux) : A simple app which increments or decrements a counter using React/Redux
 
-A: There is a project that [demos this on Github](https://github.com/Glavin001/react-hot-ts) but the [issues reported](https://github.com/Glavin001/react-hot-ts/issues) make me think it is not a good idea. If you want to experiment with this I suggest creating a branch and trying it out. You will have to run [`npm run eject` from the create-react-app tool](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) to abandon using the scripts for managing the configuration. 
+# FAQ
 
-Q: Why is fabric.js not being installed as an node module via NPM?
+**Q**: Can I have support for [Hot Reloading](https://gaearon.github.io/react-hot-loader/) for React?
 
-A: Installing it brings in a lot of dependencies and complexity to the build process. We use it only in browser applications, and the main fabric.js file is self-contained and working well. 
+**A**: There is a project that [demos this on Github](https://github.com/Glavin001/react-hot-ts) but the [issues reported](https://github.com/Glavin001/react-hot-ts/issues) make me think it is not a good idea. If you want to experiment with this I suggest creating a branch and trying it out. You will have to run [`npm run eject` from the create-react-app tool](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) to abandon using the scripts for managing the configuration. 
+
+**Q**: Why is fabric.js not being installed as an node module via NPM?
+
+**A**: Installing it brings in a lot of dependencies and complexity to the build process. We use it only in browser applications, and the main fabric.js file is self-contained and working well. 
