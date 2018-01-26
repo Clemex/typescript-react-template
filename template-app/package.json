@@ -6,6 +6,7 @@
     "@types/react-redux": "^5.0.14",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
     "react-scripts-ts": "2.12.0",
     "redux": "^3.7.2"
   },

@@ -29,9 +29,36 @@ export const Demo: React.SFC = () => (
 */
 
 import {IntlProvider} from 'react-intl';
+import ReduxCounter from './ReduxCounter';
+import { Provider } from 'react-redux';
+
+
+
+// Before used to be <Page/>
+
+import { createStore } from 'redux';
+
+const initialState = {
+    counter: 0,
+};
+    
+const reducer = (state = initialState, action: {type: string, payload: number}) => {
+    switch (action.type) {
+        case 'ADD' : 
+            return { ...state, counter: state.counter + action.payload }
+        case 'REPLACE': 
+            return { ...state, counter: action.payload }
+        default : 
+            return state;
+    }
+};
+
+const store = createStore(reducer);
 
 export const Demo: React.SFC = () => (
     <IntlProvider>
-        <Page/>
+        <Provider store={store}>
+            <ReduxCounter/>
+        </Provider>
     </IntlProvider>
 )
