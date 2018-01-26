@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {IntlProvider, FormattedMessage} from 'react-intl';
 
 export type ChildProperties = {
   msg: string;
@@ -29,7 +30,7 @@ export class Page extends React.PureComponent<PageProperties> {
 }
 
 export type HeadProperties = {
-  
+
 }
 export class Head extends React.PureComponent<HeadProperties> {
   render(): React.ReactNode {
