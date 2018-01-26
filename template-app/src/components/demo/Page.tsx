@@ -1,39 +1,55 @@
 import * as React from 'react';
-import {IntlProvider, FormattedMessage} from 'react-intl';
+import { FormattedMessage, defineMessages } from 'react-intl';
 
-export type ChildProperties = {
-  msg: string;
-}
-export class Child extends React.PureComponent<ChildProperties> {
-  render(): React.ReactNode {
-     return this.props.msg;
-  }
-}
+const messages = defineMessages({
+  app_title : {
+    id: "app.title",
+    defaultMessage: "Demo Application" ,
+  },
+});
 
-export type TestProperties = {     
-    msg: string;
-}
-export class Test extends React.PureComponent<TestProperties> {
-  render(): React.ReactNode {
-     return (<Child {...this.props}/>);
-  }
+export type Message = {
+  id: string,
+  defaultMessage: string,
 }
 
 export type PageProperties = {
-}
+} 
 export class Page extends React.PureComponent<PageProperties> {
   render(): React.ReactNode {
-     return (
-        <html><Head></Head></html>
+     return (      
+        <html>
+          <Head title={messages.app_title}/>
+          <Body />
+        </html>
       );
     }    
 }
 
 export type HeadProperties = {
-
+  title: Message;
 }
+
 export class Head extends React.PureComponent<HeadProperties> {
   render(): React.ReactNode {
-     return (<Child {...this.props}/>);
+    return (
+      <head>
+        <title><FormattedMessage {...this.props.title} /></title>
+      </head>
+    )
+  }
+}
+
+export type BodyProperties = {
+}
+export class Body extends React.PureComponent<BodyProperties> {
+  render(): React.ReactNode {
+     return (
+        <body>
+        <h1>
+          <FormattedMessage {...messages.app_title} />
+        </h1>
+        </body>
+      );
   }
 }
