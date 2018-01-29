@@ -17,5 +17,3 @@ export function pureSFC<P extends {}>(Component: React.StatelessComponent<P>): R
         }
     }
 }
-
-

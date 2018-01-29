@@ -4,6 +4,9 @@ import { Clickable } from './Clickable';
 import { SpanText } from './SpanText';
 import { Game } from './Game6';
 import { Page } from './Page';
+import { reducer as formReducer } from 'redux-form';
+
+//import * as MaterialUIForm from './MaterialUIForm';
 
 const nums = [1, 1, 2, 3, 5, 8, 13];
 const HelloWorld = SpanText('Hello world');
@@ -32,17 +35,17 @@ import {IntlProvider} from 'react-intl';
 import ReduxCounter from './ReduxCounter';
 import { Provider } from 'react-redux';
 
-
-
 // Before used to be <Page/>
 
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import { ContactForm } from './ContactForm';
 
 const initialState = {
     counter: 0,
 };
-    
-const reducer = (state = initialState, action: {type: string, payload: number}) => {
+
+
+const counterReducer = (state = initialState, action: {type: string, payload: number}) => {
     switch (action.type) {
         case 'ADD' : 
             return { ...state, counter: state.counter + action.payload }
@@ -53,8 +56,18 @@ const reducer = (state = initialState, action: {type: string, payload: number}) 
     }
 };
 
-const store = createStore(reducer);
+const rootReducer = combineReducers({
+    counter: counterReducer,
 
+    // you have to pass formReducer under 'form' key,
+    // for custom keys look up the docs for 'getFormState'
+    form: formReducer
+  })
+    
+
+const store = createStore(rootReducer);
+
+/*
 export const Demo: React.SFC = () => (
     <IntlProvider>
         <Provider store={store}>
@@ -62,3 +75,17 @@ export const Demo: React.SFC = () => (
         </Provider>
     </IntlProvider>
 )
+*/
+
+function submitHandler(formData: FormData) {
+
+}
+
+
+export const Demo: React.SFC = () => (
+    <IntlProvider>
+        <Provider store={store}>
+            <ContactForm onSubmit={x => console.log(x)}/>
+        </Provider>
+    </IntlProvider>
+);
