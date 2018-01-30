@@ -7,6 +7,39 @@ Assuming a background in React and Redux please read the following articles in o
 2. [Create React App User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
 3. [Static Typing in React & Redux using TypeScript](https://github.com/piotrwitek/react-redux-typescript-guide)
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+# Table of Contents
+
+- [Motivation](#motivation)
+- [Building and Running the Project](#building-and-running-the-project)
+- [Libraries](#libraries)
+    - [Development Tools](#development-tools)
+- [Development Principles](#development-principles)
+- [Reading List](#reading-list)
+  - [React](#react)
+  - [Redux](#redux)
+  - [React with Redux](#react-with-redux)
+  - [Redux With Fabric](#redux-with-fabric)
+  - [Redux Form with Material UI](#redux-form-with-material-ui)
+  - [React with TypeScript](#react-with-typescript)
+  - [Redux with TypeScript](#redux-with-typescript)
+  - [TypeScript](#typescript)
+- [Examples](#examples)
+- [VS Code Support](#vs-code-support)
+- [Best Practices](#best-practices)
+- [FAQ](#faq)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# Motivation
+
+There are a couple of pre-existing React/TypeScript starters and template projects such as the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) we started from, but we wanted to create a starter kit that more closely resembled a real production development stack, and that contained a number of examples for new programmers onboarding on our team. 
+
+# Building and Running the Project
+
+The command `npm run start` from a terminal (or shell) will compile and launch the project in your browser at the location `http://localhost:3000/` with a watcher which will rebuild the project whenever any source file is changed. 
+
 # Libraries
 
 This Boostrap project uses the following libraries: 
@@ -21,14 +54,6 @@ This Boostrap project uses the following libraries:
 * [Redux Thunk](https://github.com/gaearon/redux-thunk) - Middleware for writing action creators that return a function instead of an action, used to chain async actions
 * [Material UI](https://www.material-ui.com/) - React components that implement Google's Material Design
 * [Fabric.js](https://www.fabricjs.com) - A powerful and simple Javascript HTML5 canvas library
-
-# Motivation
-
-There are a couple of pre-existing React/TypeScript starters and template projects such as the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) we started from, but we wanted to create a starter kit that more closely resembled a real production development stack, and that contained a number of examples for new programmers onboarding on our team. 
-
-# Building and Running the Project
-
-The command `npm run start` from a terminal (or shell) will compile and launch the project in your browser at the location `http://localhost:3000/` with a watcher which will rebuild the project whenever any source file is changed. 
 
 ### Development Tools
 
