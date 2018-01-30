@@ -40,6 +40,7 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import { ContactForm } from './ContactForm';
 import MaterialUIForm from './MaterialUIForm';
+import { MaterialUITextFieldDemo } from './MaterialUITextFieldDemo';
 
 const initialState = {
     counter: 0,
@@ -90,7 +91,7 @@ export const Demo: React.SFC = () => (
 export const Demo: React.SFC = () => (
     <IntlProvider locale="en">
         <Provider store={store}>
-            <MaterialUIForm/>
+            <MaterialUITextFieldDemo/>
         </Provider>
     </IntlProvider>
 );

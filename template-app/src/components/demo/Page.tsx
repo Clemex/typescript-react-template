@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormattedMessage, defineMessages } from 'react-intl';
+import { defineMessages, FormattedMessage } from 'react-intl';
 
 const messages = defineMessages({
   app_title : {

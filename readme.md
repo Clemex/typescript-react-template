@@ -80,7 +80,11 @@ The following are a list of interesting articles related to the technology stack
 
 ## Redux Form with Material UI
 
-* [Redux Form with Material UI](https://redux-form.com/6.7.0/examples/material-ui/)
+* [Redux Form with Material UI](https://redux-form.com/6.7.0/examples/material-ui/) - WARNING: we are using Material-UI next, which is a different API.
+
+## Material UI with TypeScript
+
+* [TypeScript Guide for Material UI Next](https://material-ui-next.com/guides/typescript/)
 
 ## React with TypeScript
 

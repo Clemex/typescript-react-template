@@ -5,7 +5,7 @@ import {Field, reduxForm, WrappedFieldProps, BaseFieldProps} from 'redux-form';
 import {menuItem as MenuItem, renderCheckbox, renderRadioGroup, renderSelectField, renderTextField } from './MaterialUIWrapper';
 import Radio, { RadioGroup} from 'material-ui/Radio';
 import Select from 'material-ui/Select/Select';
-import SelectField from 'material-ui/Select';
+import { InputLabel } from 'material-ui';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -61,6 +61,7 @@ const MaterialUiForm = props => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
+       <InputLabel>First Name</InputLabel>
         <Field
           name="firstName"
           component={renderTextField}
@@ -68,23 +69,27 @@ const MaterialUiForm = props => {
         />
       </div>
       <div>
+        <InputLabel>Last Name</InputLabel>
         <Field name="lastName" component={renderTextField} label="Last Name" />
       </div>
       <div>
+        <InputLabel>Email</InputLabel>
         <Field name="email" component={renderTextField} label="Email" />
       </div>
       <div>
+        <InputLabel>Sex</InputLabel>
         <Field name="sex" component={renderRadioGroup}>
           <Radio value="male" title="male" />
           <Radio value="female" title="female" />
         </Field>
       </div>
       <div>
-        <SelectField floatingLabelText="Color" name="Color" value="ff0000">
+        <InputLabel>Color</InputLabel>
+        <Select name="Color" value="ff0000">
           <MenuItem value="ff0000" primaryText="Red" open={true}/>
           <MenuItem value="00ff00" primaryText="Green" open={true}/>
           <MenuItem value="0000ff" primaryText="Blue" open={true}/>
-        </SelectField>
+        </Select>
       </div>
       <div>
         <Field name="employed" component={renderCheckbox} title="Employed" />
