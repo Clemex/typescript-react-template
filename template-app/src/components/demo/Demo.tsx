@@ -39,6 +39,7 @@ import { Provider } from 'react-redux';
 
 import { createStore, combineReducers } from 'redux';
 import { ContactForm } from './ContactForm';
+import MaterialUIForm from './MaterialUIForm';
 
 const initialState = {
     counter: 0,
@@ -77,15 +78,19 @@ export const Demo: React.SFC = () => (
 )
 */
 
-function submitHandler(formData: FormData) {
-
-}
-
-
+/*
 export const Demo: React.SFC = () => (
     <IntlProvider>
         <Provider store={store}>
             <ContactForm onSubmit={x => console.log(x)}/>
+        </Provider>
+    </IntlProvider>
+);
+*/
+export const Demo: React.SFC = () => (
+    <IntlProvider locale="en">
+        <Provider store={store}>
+            <MaterialUIForm/>
         </Provider>
     </IntlProvider>
 );

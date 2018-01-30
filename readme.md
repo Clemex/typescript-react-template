@@ -1,6 +1,6 @@
 # A Template for TypeScript Projects using React, Redux, and Fabric
 
-This project is a template project developed by Clemex Technologies for bootstrapping new React/Redux applications in TypeScript. We started from the [TypeScript React Starter] from Microsoft. (https://github.com/Microsoft/TypeScript-React-Starter). 
+This project is a template project developed by Clemex Technologies for bootstrapping new React/Redux applications in TypeScript. We started from the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) from Microsoft. 
 
 Assuming a background in React and Redux please read the following articles in order:
 1. [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter). 
@@ -130,6 +130,7 @@ We have provided a [Visual Studio Code snippet](https://code.visualstudio.com/do
 * Prefer lots of small components to large monolithic components
 * Import only the names you need from a module, not everything
 * Document your code, especially when doing some non-idiomatic
+* Use message objects, not raw strings, so that your UI can be easily internationalized and made accessible
 
 # FAQ
 
