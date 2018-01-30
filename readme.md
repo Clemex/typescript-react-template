@@ -8,11 +8,9 @@ Assuming a background in React and Redux please read the following articles in o
 3. [Static Typing in React & Redux using TypeScript](https://github.com/piotrwitek/react-redux-typescript-guide)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE. https://www.npmjs.com/package/doctoc -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+# Table of Contents
 
-**Table of Contents**
-
-- [A Template for TypeScript Projects using React, Redux, and Fabric](#a-template-for-typescript-projects-using-react-redux-and-fabric)
 - [Motivation](#motivation)
 - [Building and Running the Project](#building-and-running-the-project)
 - [Libraries](#libraries)
@@ -33,7 +31,6 @@ Assuming a background in React and Redux please read the following articles in o
 - [FAQ](#faq)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 
 # Motivation
 
