@@ -54,6 +54,7 @@ This Boostrap project uses the following libraries:
 * [Redux Thunk](https://github.com/gaearon/redux-thunk) - Middleware for writing action creators that return a function instead of an action, used to chain async actions
 * [Material UI](https://www.material-ui.com/) - React components that implement Google's Material Design
 * [Fabric.js](https://www.fabricjs.com) - A powerful and simple Javascript HTML5 canvas library
+* [JSS](https://github.com/cssinjs/jss) - Using JavaScript to describe styles in a declarative and maintainable way
 
 ### Development Tools
 
@@ -145,21 +146,22 @@ We have provided a [Visual Studio Code snippet](https://code.visualstudio.com/do
 # Best Practices
 
 * We recommend using Classes over Stateless Functional Components (SFC) 
-* Classes should by default derive from PureComponent 
+* Classes should by default derive from `PureComponent` 
 * Minimize usage of state in a component, unless for purely presentation purposes
 * If using state in a component, put it in a `state` member variable
 * All changes to state in a component should happen through a function passed to the `setState` member function
-* If possible try to maximize logic in the render function (don't worry about efficiency)
 * Minimize directly coupling of components to the various imported libraries 
 * Avoid using `shouldComponentUpdate` if possible, use it as a last resort 
-* Avoid using default export, names should be consistent across modules
-* Prefer const over `let` and `var`, and prefer `let` over `var`
+* Avoid using `default export`, names should be consistent across modules
+* Prefer `const` over `let` and `var`, and prefer `let` over `var`
 * By default make class members `readonly`
-* Usually provide an exported properties type with a name
+* Usually provide an exported named properties type
 * Prefer lots of small components to large monolithic components
-* Import only the names you need from a module, not everything
+* Preferably import only the names you need from a module, not everything
 * Document your code, especially when doing some non-idiomatic
 * Use message objects, not raw strings, so that your UI can be easily internationalized and made accessible
+* Two spaces for tabs in JS[X]/TS[X] code, four spaces for JSON
+* Use ES-Lint with the recommended rules 
 
 # FAQ
 
