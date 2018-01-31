@@ -82,7 +82,7 @@ const middleware = applyMiddleware(logger);
 const store = createStore(rootReducer, middleware);
 
 export const Demo: React.SFC = () => (
-    <IntlProvider>
+    <IntlProvider locale="en">
         <Provider store={store}>
             <ReduxCounter/>
         </Provider>
