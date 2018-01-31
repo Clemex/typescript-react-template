@@ -11,7 +11,7 @@ import { reducer as formReducer } from 'redux-form';
 const nums = [1, 1, 2, 3, 5, 8, 13];
 const HelloWorld = SpanText('Hello world');
 const ClickMe = Clickable(SpanText('Click me'), () => alert('clicked'));
- 
+
 /*
 export const Demo: React.SFC = () => (
     <div> 
@@ -37,15 +37,15 @@ import { Provider } from 'react-redux';
 
 // Before used to be <Page/>
 
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { ContactForm } from './ContactForm';
 import MaterialUIForm from './MaterialUIForm';
 import { MaterialUITextFieldDemo } from './MaterialUITextFieldDemo';
+import { createLogger } from 'redux-logger';
 
 const initialState = {
     counter: 0,
 };
-
 
 const counterReducer = (state = initialState, action: {type: string, payload: number}) => {
     switch (action.type) {
@@ -58,18 +58,29 @@ const counterReducer = (state = initialState, action: {type: string, payload: nu
     }
 };
 
+// https://www.npmjs.com/package/redux-logger
+const logger = createLogger({
+  // ...options 
+});
+ 
 const rootReducer = combineReducers({
     counter: counterReducer,
 
     // you have to pass formReducer under 'form' key,
     // for custom keys look up the docs for 'getFormState'
-    form: formReducer
+    form: formReducer,
   })
-    
 
-const store = createStore(rootReducer);
+// logger must be the last middleware in chain, otherwise it will log thunk and promise, not actual actions 
+const middleware = applyMiddleware(logger);
 
-/*
+// Need to make the Intl object globally available. This will be done by injecting a middleware that caches
+// the current strings. 
+// https://github.com/yahoo/react-intl/issues/416#issuecomment-223039994
+// const applyMiddleware(thunk.withExtraArgument({intl: getIntl}))
+
+const store = createStore(rootReducer, middleware);
+
 export const Demo: React.SFC = () => (
     <IntlProvider>
         <Provider store={store}>
@@ -77,7 +88,6 @@ export const Demo: React.SFC = () => (
         </Provider>
     </IntlProvider>
 )
-*/
 
 /*
 export const Demo: React.SFC = () => (
@@ -88,6 +98,9 @@ export const Demo: React.SFC = () => (
     </IntlProvider>
 );
 */
+
+
+/*
 export const Demo: React.SFC = () => (
     <IntlProvider locale="en">
         <Provider store={store}>
@@ -95,3 +108,5 @@ export const Demo: React.SFC = () => (
         </Provider>
     </IntlProvider>
 );
+*/
+
