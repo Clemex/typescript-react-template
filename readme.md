@@ -9,6 +9,8 @@ Assuming a background in React and Redux please read the following articles in o
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<!-- Install doctoc : npm install -g doctoc -->
+<!-- And run the command: " doctoc readme.md "to update the ToC -->
 # Table of Contents
 
 - [Motivation](#motivation)
@@ -22,6 +24,7 @@ Assuming a background in React and Redux please read the following articles in o
   - [React with Redux](#react-with-redux)
   - [Redux With Fabric](#redux-with-fabric)
   - [Redux Form with Material UI](#redux-form-with-material-ui)
+  - [Material UI with TypeScript](#material-ui-with-typescript)
   - [React with TypeScript](#react-with-typescript)
   - [Redux with TypeScript](#redux-with-typescript)
   - [TypeScript](#typescript)
