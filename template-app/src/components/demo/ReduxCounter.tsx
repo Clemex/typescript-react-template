@@ -1,59 +1,36 @@
 // Import react and redux
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { WithStyles, withStyles, Paper } from 'material-ui';
+import { Text, BaseStyleProps, NumberInput, NumberInputProps, LabeledButton } from '../shared/shared';
 
 // TODO: add internationalization support 
-// TODO: add styles support 
+
+// NOTE: without type cast things fail: https://github.com/Microsoft/TypeScript/issues/6352
 
 // TODO: move these out of the component. 
 export const addAmount = (value: number) => ({ type: 'ADD', payload: value });
 export const replaceAmount = (value: number) => ({ type: 'REPLACE', payload: value });
 
-export type ButtonProperties = {
-  label: string;
-  click: () => void;
+const styles = {
+  root: {
+    backgroundColor: 'red',
+  },
 };
 
 export type CounterValueProps = {
   value: number;
 }
 
-export type CounterInputProps = CounterValueProps & {
-  change: (value: number) => void;
-}
-
-export type CounterProps = CounterValueProps & CounterInputProps & {
-}
-
-export class CounterButton extends React.PureComponent<ButtonProperties> {
-  render(): React.ReactNode {
-    return (
-      <div className="counterButton">
-        <button onClick={e => this.props.click()}>
-          {this.props.label}
-        </button>
-      </div>
-    );
-  }
+export type CounterProps = BaseStyleProps & CounterValueProps & NumberInputProps & {
 }
 
 export class CounterDisplay extends React.PureComponent<CounterValueProps> {
   render(): React.ReactNode {
      return (
-      <div className="counterDisplay">
-        <h2>The current counter is</h2>
-        <h1>{this.props.value}</h1>
-      </div>
-    );
-  }
-}
-
-export class CounterInput extends React.PureComponent<CounterInputProps> {
-  render(): React.ReactNode {
-    return (
-      <div className="counterInput"> 
-        <input type="number" autoFocus value={this.props.value} onChange={e => this.props.change(+e.target.value)}/>
-      </div>
+        <Text type="display1">
+          The current counter is: {this.props.value}
+        </Text>
     );
   }
 }
@@ -63,13 +40,14 @@ export class Counter extends React.PureComponent<CounterProps> {
     const inc = () => this.props.change(this.props.value + 1);
     const dec = () => this.props.change(this.props.value - 1);
     return (
-       <div>
-        <h3>Counter Manager</h3>
-        <CounterDisplay value={this.props.value}/>
-        <CounterInput value={this.props.value} change={this.props.change} />
-        <CounterButton label={'Increment'} click={inc} />
-        <CounterButton label={'Decrement'} click={dec} />
-      </div>
+       <Paper elevation={4}>
+        <div>
+          <CounterDisplay {...this.props}/>
+          <NumberInput {...this.props}/>
+          <LabeledButton label={'Increment'} click={inc} {...this.props}/>
+          <LabeledButton label={'Decrement'} click={dec} {...this.props}/>
+        </div>
+      </Paper>
     );
   }
 }
@@ -86,5 +64,8 @@ const mapDispatchToProps = (dispatch: any) => ({
   change: (value: number) => dispatch(replaceAmount(value))
 });
 
+// Applies the specified styles 
+export const StyledCounter = withStyles(styles)(Counter);
+
 // The 'connect' take a Container and returns a high order component 
-export default connect<Partial<CounterProps>>(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect<Partial<CounterProps>>(mapStateToProps, mapDispatchToProps)(StyledCounter);
