@@ -3,9 +3,7 @@ import { WithStyles, Button, TextField } from 'material-ui';
 import Typography from 'material-ui/Typography/Typography';
 import { Style } from 'material-ui/styles/createTypography';
 
-export type BaseStyleProps = WithStyles<'root'> & {
-    classes: any;
-  }
+export type BaseStyleProps = Partial<WithStyles<'root'>>;
 
 export type ButtonProperties = BaseStyleProps & {
     label: string;
@@ -27,7 +25,7 @@ export class NumberInput extends React.PureComponent<NumberInputProps> {
           value={this.props.value}
           onChange={e => this.props.change(+e.target.value)}
           type="number"
-          className={this.props.classes.textField}
+          className={(this.props.classes || {})['textField']}
           InputLabelProps={{
             shrink: true,
           }}
