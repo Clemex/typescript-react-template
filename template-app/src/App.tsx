@@ -1,42 +1,42 @@
 import * as React from 'react';
-import './App.css';
-import { Demo } from './components/demo/Demo';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { reducer as formReducer } from 'redux-form';
+import { IntlProvider } from 'react-intl';
+import { createLogger } from 'redux-logger';
+import { CounterContainer, counterReducer } from './components/CounterContainer';
+ 
+// Combine the reducers 
+const rootReducer = combineReducers({
+    // The application specific reducer
+    counter: counterReducer,
 
+    // Used for redux form 
+    // you have to pass formReducer under 'form' key,
+    // for custom keys look up the docs for 'getFormState'
+    form: formReducer,
+  })
 
-/*
-import Child from './Child';
-import { CallbackButton } from './CallbackButton';
+// Creates a logger component 
+// https://www.npmjs.com/package/redux-logger
+const logger = createLogger({
+    // ...options 
+  });
 
-const logo = require('./logo.svg');
+// Apply the redux middleware
+// https://redux.js.org/docs/advanced/Middleware.html
+const middleware = applyMiddleware(
+    // logger must be the last middleware in chain, otherwise it will log thunk and promise, not actual actions 
+    logger);
 
-class App extends React.Component {
-  render() {
-    const callback = () => { alert('pressed'); };
-    
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+// Create a store with the combined reducers and middleware
+const store = createStore(rootReducer, middleware);
 
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        
-        </p>
-        <Child />
-        <p/>
-        <CallbackButton 
-          callback={callback} 
-          label="Press me, I am a button!"
-        />
-      </div>
-    );
-  }
-}*/
-
-export default class App extends React.Component {
-  render() {
-    return (<Demo/>);
-  }
-}
+// The main component.  
+export const App: React.SFC = () => (
+    <IntlProvider locale="en">
+        <Provider store={store}>
+            <CounterContainer/>
+        </Provider>
+    </IntlProvider>
+)

@@ -2,26 +2,27 @@ import * as React from 'react';
 import { WithStyles, Button, TextField } from 'material-ui';
 import Typography from 'material-ui/Typography/Typography';
 import { Style } from 'material-ui/styles/createTypography';
+import { FormattedMessage } from 'react-intl';
 
 export type BaseStyleProps = Partial<WithStyles<'root'>>;
 
 export type ButtonProperties = BaseStyleProps & {
-    label: string;
+    label: FormattedMessage.MessageDescriptor;
     click: () => void;
   }
   
 export type NumberInputProps = BaseStyleProps & {
-    label: string;
+    label: FormattedMessage.MessageDescriptor;
     value: number;
     change: (value: number) => void;
   }
-
   
 export class NumberInput extends React.PureComponent<NumberInputProps> {
     render(): React.ReactNode {
-      return (
+      const label = (<FormattedMessage {...this.props.label}/>);
+      return (        
         <TextField
-          label={this.props.label}
+          label={label}
           value={this.props.value}
           onChange={e => this.props.change(+e.target.value)}
           type="number"
@@ -39,7 +40,7 @@ export class NumberInput extends React.PureComponent<NumberInputProps> {
     render(): React.ReactNode {
       return (
         <Button onClick={e => this.props.click()}>
-            {this.props.label}
+            <FormattedMessage {...this.props.label}/>
         </Button>
       );
     }
