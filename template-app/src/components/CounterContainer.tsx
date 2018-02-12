@@ -8,16 +8,24 @@ export class CounterState {
     readonly undoIndex: number = 0;
 }
 
-// Types of actions triggered by the counter  
-export type CounterAction = {
-    readonly type: string, 
-    readonly payload: number
+// Common base action type
+export type SimpleAction<T> = { readonly type: T; }
+export type ActionWithPayload<T, P> = { readonly type: T; readonly payload: P; }
+
+// Counter specific action types
+export type ReplaceAction = ActionWithPayload<'REPLACE', number>;
+export function replaceActionCreator(value: number): ReplaceAction {
+    return { type: 'REPLACE', payload: value };
 }
 
-// Actions and action creators 
-export const replaceActionCreator = (value: number): CounterAction => ({ type: 'REPLACE', payload: value });
-export const undoAction: CounterAction = {type: 'UNDO', payload: 0};
-export const redoAction: CounterAction = {type: 'REDO', payload: 0};
+export type UndoAction = SimpleAction<'UNDO'>;
+export const undoAction: UndoAction = { type: 'UNDO' }
+
+export type RedoAction = SimpleAction<'REDO'>;
+export const redoAction: RedoAction = { type: 'REDO' }
+
+// The union of all posible action types 
+export type CounterAction = ReplaceAction | UndoAction | RedoAction;
 
 // Reducers 
 export const counterReducer = (state:CounterState = new CounterState(), action: CounterAction): CounterState => {
