@@ -8,7 +8,7 @@ import { defineMessages, FormattedMessage } from 'react-intl';
 const messages = defineMessages({
   current_counter_label: {
     id: "current_counter_label",
-    defaultMessage: "The current counter is" ,
+    defaultMessage: "The current counter is: {value}" ,
   },
   counter_label: { 
     id: "counter_label",
@@ -33,17 +33,14 @@ const messages = defineMessages({
 });
 
 // Styles 
-const styles = (theme: Theme) => ({
+const styles = {
   root: {
     backgroundColor: 'red',
   },
-  theme1: {
-    backgroundColor: 'blue',
-  }
-} as React.CSSProperties);
+} as React.CSSProperties;
 
 // Properties
-export type CounterProps = WithStyles<'root'|'theme1'> & {
+export type CounterProps = WithStyles<'root'> & {
   value: number;
   change: (value: number) => void;
   undo: () => void;
@@ -55,7 +52,7 @@ export class CounterDisplay extends React.PureComponent<CounterProps> {
   render(): React.ReactNode {
      return (
         <Text type="display1">
-          <FormattedMessage {...messages.current_counter_label}/>: {this.props.value}
+          <FormattedMessage {...messages.current_counter_label} values={{value:this.props.value}}/>
         </Text>
     );
   }
