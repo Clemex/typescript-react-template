@@ -1,0 +1,25 @@
+{
+	"component": {
+		"prefix": "Component",
+		"description": "Create a pure React component with a state type and a properties type",
+		"body": [
+			"export type ${1:name}Properties = {",
+			"};",
+			"",
+			"export type ${1:name}State = {",
+			"};",
+			"",
+			"export class ${1:name} extends React.PureComponent<${1:name}Properties> {",
+			"  state: ${1:name}State = {};",
+			"",
+			"  constructor(p: ${1:name}Properties) {",
+			"    super(p);",
+			"  }",
+			"",
+			"  render(): React.ReactNode {",
+			"  }",
+			"}",
+			""
+		]
+	}
+}
