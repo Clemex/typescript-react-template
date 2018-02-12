@@ -85,6 +85,9 @@ The principle we are developing from are:
 
 Also see the [Zen of Python](https://www.python.org/dev/peps/pep-0020/). 
 
+# Project Structure 
+
+
 # Reading List
 
 The following are a list of interesting articles related to the technology stack and the intersections of different technologies.  
