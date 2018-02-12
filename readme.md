@@ -15,6 +15,7 @@ Assuming a background in React and Redux please read the following articles in o
 
 - [Motivation](#motivation)
 - [Building and Running the Project](#building-and-running-the-project)
+- [Project Structure](#project-structure)
 - [Libraries](#libraries)
     - [Development Tools](#development-tools)
 - [Development Principles](#development-principles)
@@ -42,6 +43,14 @@ There are a couple of pre-existing React/TypeScript starters and template projec
 # Building and Running the Project
 
 The command `npm run start` from a terminal (or shell) will compile and launch the project in your browser at the location `http://localhost:3000/` with a watcher which will rebuild the project whenever any source file is changed. 
+
+# Project Structure 
+
+1. `App.tsx` - The main entry point of the application 
+1. `components\MainPage.tsx` - A presentation component which uses a `Grid` to layout a page
+1. `components\Counter.tsx` - The presentational component for a counter which can be incremented, decremented, edited, and which supports undo/redo
+1. `components\CounterContainer.tsx` - A redux-connected container component for the counter along with the relevant action and reducer
+1. `components\shared.tsx` - Shared presentational components which wrap Material UI components
 
 # Libraries
 
@@ -84,9 +93,6 @@ The principle we are developing from are:
 * Don't make me think
 
 Also see the [Zen of Python](https://www.python.org/dev/peps/pep-0020/). 
-
-# Project Structure 
-
 
 # Reading List
 
