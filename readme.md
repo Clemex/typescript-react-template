@@ -2,11 +2,6 @@
 
 This project is a template project developed by Clemex Technologies for bootstrapping new React/Redux applications in TypeScript. We started from the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) from Microsoft. 
 
-Assuming a background in React and Redux please read the following articles in order:
-1. [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter). 
-2. [Create React App User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
-3. [Static Typing in React & Redux using TypeScript](https://github.com/piotrwitek/react-redux-typescript-guide)
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 <!-- Install doctoc : npm install -g doctoc -->
@@ -14,8 +9,8 @@ Assuming a background in React and Redux please read the following articles in o
 # Table of Contents
 
 - [Motivation](#motivation)
-- [Building and Running the Project](#building-and-running-the-project)
 - [Project Structure](#project-structure)
+- [Building and Running the Project](#building-and-running-the-project)
 - [Libraries](#libraries)
     - [Development Tools](#development-tools)
 - [Development Principles](#development-principles)
@@ -38,11 +33,7 @@ Assuming a background in React and Redux please read the following articles in o
 
 # Motivation
 
-There are a couple of pre-existing React/TypeScript starters and template projects such as the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) we started from, but we wanted to create a starter kit that more closely resembled a real production development stack, and that contained a number of examples for new programmers onboarding on our team. 
-
-# Building and Running the Project
-
-The command `npm run start` from a terminal (or shell) will compile and launch the project in your browser at the location `http://localhost:3000/` with a watcher which will rebuild the project whenever any source file is changed. 
+There are a couple of pre-existing React/Redux/TypeScript starters and template projects such as the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) we started from, but we wanted to create a starter kit that more closely resembled a real production development stack, and that contained a template example for new programmers onboarding on our team. 
 
 # Project Structure 
 
@@ -51,6 +42,10 @@ The command `npm run start` from a terminal (or shell) will compile and launch t
 1. `components\Counter.tsx` - The presentational component for a counter which can be incremented, decremented, edited, and which supports undo/redo
 1. `components\CounterContainer.tsx` - A redux-connected container component for the counter along with the relevant action and reducer
 1. `components\shared.tsx` - Shared presentational components which wrap Material UI components
+
+# Building and Running the Project
+
+The command `npm run start` from a terminal (or shell) will compile and launch the project in your browser at the location `http://localhost:3000/` with a watcher which will rebuild the project whenever any source file is changed. 
 
 # Libraries
 
@@ -97,6 +92,12 @@ Also see the [Zen of Python](https://www.python.org/dev/peps/pep-0020/).
 # Reading List
 
 The following are a list of interesting articles related to the technology stack and the intersections of different technologies.  
+
+## TypeScript and React Starter 
+
+1. [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter). 
+2. [Create React App User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
+3. [Static Typing in React & Redux using TypeScript](https://github.com/piotrwitek/react-redux-typescript-guide)
 
 ## React 
 
