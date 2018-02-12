@@ -1,30 +1,31 @@
 import * as React from 'react';
-import { WithStyles, Grid, Paper } from 'material-ui';
+import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
 
 export type MainPageProperties = {
-    sidebar: React.ReactNode;
-    header: React.ReactNode;
-    content: React.ReactNode;
+  sidebar: React.ReactNode;
+  header: React.ReactNode;
+  content: React.ReactNode;
 }
 
 export class MainPage extends React.PureComponent<MainPageProperties> {
   render(): React.ReactNode {
-     return (
-        <Paper>
-            <Grid container spacing={24}>
-                <Grid item xs={2}>
-                </Grid>
-                <Grid item xs={10}>
-                    {this.props.header}
-                </Grid>
-                <Grid item xs={2}>
-                    {this.props.sidebar}
-                </Grid>
-                <Grid item xs={10}>
-                    {this.props.content}
-                </Grid>        
-            </Grid>
-        </Paper>
-      );
+    return (
+      <Paper>
+        <Grid container spacing={24}>
+          <Grid item xs={2}>
+          </Grid>
+          <Grid item xs={10}>
+            {this.props.header}
+          </Grid>
+          <Grid item xs={2}>
+            {this.props.sidebar}
+          </Grid>
+          <Grid item xs={10}>
+            {this.props.content}
+          </Grid>
+        </Grid>
+      </Paper>
+    );
   }
 }
