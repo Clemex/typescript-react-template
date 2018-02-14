@@ -67,17 +67,17 @@ This Boostrap project uses the following libraries:
 
 We are using the following development tools:
 
-* [TypeScript](https://www.typescriptlang.org/) : Statically typed Javascript that compiles to plain Javascript
-* [TS-Lint](https://palantir.github.io/tslint/) : Linter for the TypeScript language
-* [Webpack](https://webpack.js.org/) : Let you bundle JavaScript files for usage in a browser (needed for React)
-* [Node](https://nodejs.org) : JavaScript runtime built on Chrome's V8 JavaScript engine
-* [NPM](https://www.npmjs.com/) : Node Package Manager 
-* [Babel](https://babeljs.io/) :  Tool that helps you write code in the latest version of JavaScript
-* [Jest](https://facebook.github.io/jest/) : Test all JavaScript code including React applications
-* [create-react-app](https://github.com/facebook/create-react-app) : Bootstrap React app
+* [TypeScript](https://www.typescriptlang.org/) - Statically typed Javascript that compiles to plain Javascript
+* [TS-Lint](https://palantir.github.io/tslint/) - Linter for the TypeScript language
+* [Webpack](https://webpack.js.org/) - Let you bundle JavaScript files for usage in a browser (needed for React)
+* [Node](https://nodejs.org) - JavaScript runtime built on Chrome's V8 JavaScript engine
+* [NPM](https://www.npmjs.com/) - Node Package Manager 
+* [Babel](https://babeljs.io/) -  Tool that helps you write code in the latest version of JavaScript
+* [Jest](https://facebook.github.io/jest/) - Test all JavaScript code including React applications
+* [create-react-app](https://github.com/facebook/create-react-app) - Bootstrap React app
 * [React Developer Tools for Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 * [Redux DevTools for Chrome](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
-* [Visual Studio Code](https://code.visualstudio.com/) : Source code editor by Microsoft for Windows, Linux and macOS
+* [Visual Studio Code](https://code.visualstudio.com/) - Source code editor by Microsoft for Windows, Linux and macOS
 
 # Development Principles
 
@@ -150,7 +150,7 @@ For trouble-shooting:
 
 # Examples
 
-* [Counter](https://github.com/Leyka/learning-react/tree/master/react-redux) : A simple app which increments or decrements a counter using React/Redux
+* [Counter](https://github.com/Leyka/learning-react/tree/master/react-redux) - A simple app which increments or decrements a counter using React/Redux
 
 # VS Code Support
 
