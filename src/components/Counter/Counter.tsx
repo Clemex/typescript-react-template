@@ -1,69 +1,88 @@
-import { connect } from 'react-redux';
-import { CounterProps, Counter } from './CounterContainer';
+import * as React from 'react';
+import { WithStyles, withStyles, Paper } from 'material-ui';
+import { Text, BaseStyleProps, NumberInput, NumberInputProps, LabeledButton } from '../shared';
+import { Theme } from 'material-ui/styles';
+import { defineMessages, FormattedMessage } from 'react-intl';
 
-// The state of the counter 
-export class CounterState {
-    readonly counter: number = 0;
-    readonly history: number[] = [0]; 
-    readonly undoIndex: number = 0;
+// Localizable strirngs 
+const messages = defineMessages({
+  current_counter_label: {
+    id: "current_counter_label",
+    defaultMessage: "The current counter is: {value}" ,
+  },
+  counter_label: { 
+    id: "counter_label",
+    defaultMessage: "counter",
+  },
+  increment: {
+    id: "increment",
+    defaultMessage: "increment",
+  },
+  decrement: {
+    id: "decrement",
+    defaultMessage: "decrement",
+  },
+  undo: {
+    id: "undo",
+    defaultMessage: "undo",
+  },
+  redo: {
+    id: "decrement",
+    defaultMessage: "redo",
+  }
+});
+
+// Styles 
+const styles = {
+  root: {
+    backgroundColor: 'red',
+  },
+} as React.CSSProperties;
+
+// Properties
+export type CounterProps = WithStyles<'root'> & {
+  value: number;
+  change: (value: number) => void;
+  undo: () => void;
+  redo: () => void;
 }
 
-// Common base action type
-export type SimpleAction<T> = { readonly type: T; }
-export type ActionWithPayload<T, P> = { readonly type: T; readonly payload: P; }
-
-// Counter specific action types
-export type ReplaceAction = ActionWithPayload<'REPLACE', number>;
-export function replaceActionCreator(value: number): ReplaceAction {
-    return { type: 'REPLACE', payload: value };
+// Helper component
+export class CounterDisplay extends React.PureComponent<CounterProps> {
+  render(): React.ReactNode {
+     return (
+        <Text type="display1">
+          <FormattedMessage {...messages.current_counter_label} values={{value:this.props.value}}/>
+        </Text>
+    );
+  }
 }
 
-export type UndoAction = SimpleAction<'UNDO'>;
-export const undoAction: UndoAction = { type: 'UNDO' }
+// Main presentation component: without styles
+export class UnstyledCounter extends React.PureComponent<CounterProps> {
+  render() {
+    const inc = () => this.props.change(this.props.value + 1);
+    const dec = () => this.props.change(this.props.value - 1);
+    const undo = () => this.props.undo();
+    const redo = () => this.props.redo();
+    return (
+       <Paper elevation={4}>
+        <div>
+          <CounterDisplay {...this.props}/>
+          <NumberInput label={messages.counter_label} {...this.props}/>
+        </div>
+        <div>
+          <LabeledButton label={messages.increment} click={inc} {...this.props}/>
+          <LabeledButton label={messages.decrement} click={dec} {...this.props}/>
+        </div>
+        <div>
+           <LabeledButton label={messages.undo} click={undo} {...this.props}/>
+           <LabeledButton label={messages.redo} click={redo} {...this.props}/>
+        </div>
+      </Paper>
+    );
+  }
+}
 
-export type RedoAction = SimpleAction<'REDO'>;
-export const redoAction: RedoAction = { type: 'REDO' }
-
-// The union of all posible action types 
-export type CounterAction = ReplaceAction | UndoAction | RedoAction;
-
-// Reducers 
-export const counterReducer = (state:CounterState = new CounterState(), action: CounterAction): CounterState => {
-    switch (action.type) {
-        case 'REPLACE':
-            return state.counter !== action.payload ? {
-                counter: action.payload, 
-                history: [...state.history.slice(0, state.undoIndex+1), action.payload],
-                undoIndex: state.undoIndex+1 
-            } : state;
-        case 'UNDO':
-           return state.undoIndex > 0 ? {    
-                counter: state.history[state.undoIndex - 1],
-                history: state.history,
-                undoIndex: state.undoIndex-1,
-            } : state;
-        case 'REDO':
-            return state.undoIndex < state.history.length - 1 ? {
-                counter: state.history[state.undoIndex+1],
-                history: state.history,
-                undoIndex: state.undoIndex+1,
-            } : state;
-        default : 
-            return state;
-    }
-};
-
-// Mapping of the state to the counter props 
-const mapStateToProps = (state: any): Partial<CounterProps> => ({
-    value: state.counter.counter as number,
-  });
-  
-// Mapping of dispatch to properties 
-const mapDispatchToProps = (dispatch: any): Partial<CounterProps> => ({
-    change: (value: number) => dispatch(replaceActionCreator(value)),
-    undo: () => dispatch(undoAction),
-    redo: () => dispatch(redoAction),
-  });
-
-// The 'connect' take a Container and returns a high order component
-export const CounterContainer = connect(mapStateToProps, mapDispatchToProps)(Counter);
+// Applies the specified styles 
+export const Counter = withStyles(styles)(UnstyledCounter);
