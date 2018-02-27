@@ -48,13 +48,7 @@ export type CounterProps = WithStyles<'root'> & {
 }
 
 // Helper component
-export class CounterDisplay exStyles 
-const styles = {
-  root: {
-    backgroundColor: 'red',
-  },
-} as React.CSSProperties;
-tends React.PureComponent<CounterProps> {
+export class CounterDisplay extends React.PureComponent<CounterProps> {
   render(): React.ReactNode {
      return (
         <Text type="display1">
