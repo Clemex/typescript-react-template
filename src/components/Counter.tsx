@@ -1,16 +1,16 @@
 import * as React from 'react';
+import { WithStyles, withStyles, Paper } from 'material-ui';
 import { Text, BaseStyleProps, NumberInput, NumberInputProps, LabeledButton } from './shared';
-import Paper from 'material-ui/Paper'
-import { WithStyles, withStyles } from 'material-ui/styles';
+import { Theme } from 'material-ui/styles';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
-// Localizable strings
+// Localizable strirngs 
 const messages = defineMessages({
   current_counter_label: {
     id: "current_counter_label",
     defaultMessage: "The current counter is: {value}" ,
   },
-  counter_label: {
+  counter_label: { 
     id: "counter_label",
     defaultMessage: "counter",
   },
@@ -32,7 +32,7 @@ const messages = defineMessages({
   }
 });
 
-// Styles
+// Styles 
 const styles = {
   root: {
     backgroundColor: 'red',
@@ -51,7 +51,7 @@ export type CounterProps = WithStyles<'root'> & {
 export class CounterDisplay extends React.PureComponent<CounterProps> {
   render(): React.ReactNode {
      return (
-        <Text variant="display1">
+        <Text type="display1">
           <FormattedMessage {...messages.current_counter_label} values={{value:this.props.value}}/>
         </Text>
     );
@@ -84,5 +84,5 @@ export class UnstyledCounter extends React.PureComponent<CounterProps> {
   }
 }
 
-// Applies the specified styles
+// Applies the specified styles 
 export const Counter = withStyles(styles)(UnstyledCounter);
