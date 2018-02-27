@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { CounterProps, Counter } from './Counter';
+import { Counter, CounterProps } from './Counter';
 import {undoAction, redoAction, replaceActionCreator} from './CounterAction';
 
 // The state of the counter 
