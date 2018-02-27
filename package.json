@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@behance/fabric": "^1.6.1-nodeless",
     "@types/react-redux": "^5.0.14",
     "@types/redux-form": "^7.0.13",
     "material-ui": "^1.0.0-beta.30",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-intl": "^2.4.0",
     "react-redux": "^5.0.6",
     "react-scripts-ts": "2.12.0",
     "redux": "^3.7.2",

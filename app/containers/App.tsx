@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { reducer as formReducer } from 'redux-form';
 import { IntlProvider } from 'react-intl';
 import { createLogger } from 'redux-logger';
-import { CounterContainer, counterReducer } from './components/CounterContainer';
-import { MainPage } from './components/MainPage';
-import { LabeledButton, Text } from './components/shared';
+import { CounterContainer, counterReducer } from '../components/Counter/Counter';
+import { MainPage } from '../components/MainPage';
+import { LabeledButton, Text } from '../components/shared';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { createMuiTheme, List, ListItem, ListItemText } from 'material-ui';
 import { Theme } from 'material-ui/styles';
@@ -75,13 +75,7 @@ export class App extends React.PureComponent<AppProperties, AppState>
     const header = (<Text type="display2">Welcome to my first TypeScript React/Redux Application</Text>);
 
     const sidebar = (
-      <List component="nav">
-        <ListItem button>
-          <ListItemText primary="Entry 1" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Entry 2" />
-        </ListItem>    
+      <List component="nav">  
         <ListItem button onClick={e => this.setLightTheme()}>
           <ListItemText primary="light"/>
         </ListItem>

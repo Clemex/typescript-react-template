@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { WithStyles, withStyles, Paper } from 'material-ui';
-import { Text, BaseStyleProps, NumberInput, NumberInputProps, LabeledButton } from './shared';
+import { Text, BaseStyleProps, NumberInput, NumberInputProps, LabeledButton } from '../shared';
 import { Theme } from 'material-ui/styles';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
@@ -48,7 +48,13 @@ export type CounterProps = WithStyles<'root'> & {
 }
 
 // Helper component
-export class CounterDisplay extends React.PureComponent<CounterProps> {
+export class CounterDisplay exStyles 
+const styles = {
+  root: {
+    backgroundColor: 'red',
+  },
+} as React.CSSProperties;
+tends React.PureComponent<CounterProps> {
   render(): React.ReactNode {
      return (
         <Text type="display1">

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { CounterProps, Counter } from './Counter';
+import { CounterProps, Counter } from './CounterContainer';
 
 // The state of the counter 
 export class CounterState {
