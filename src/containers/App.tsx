@@ -5,25 +5,21 @@ import { reducer as formReducer } from 'redux-form';
 import { IntlProvider } from 'react-intl';
 import { createLogger } from 'redux-logger';
 import { CounterContainer } from '../components/Counter/CounterContainer';
+import { CounterForm } from '../components/CounterForm';
 import { counterReducer } from '../components/Counter/CounterReducer';
 import { MainPage } from '../components/MainPage';
-import { LabeledButton, Text } from '../components/shared';
+import { LabeledButton } from '../components/ui-shared/LabeledButton';
+import { Text } from '../components/ui-shared/Text';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { createMuiTheme, List, ListItem, ListItemText } from 'material-ui';
 import { Theme } from 'material-ui/styles';
  
-// Combine the reducers 
 const rootReducer = combineReducers({
-    // A specific reducer for our counter
     counter: counterReducer,
-
-    // Used for redux form 
-    // you have to pass formReducer under 'form' key,
-    // for custom keys look up the docs for 'getFormState'
     form: formReducer,
   })
 
-// Set overrides of Material UI components 
+
 const themeOverrides = {
   MuiPaper: {
     root: {
@@ -85,7 +81,7 @@ export class App extends React.PureComponent<AppProperties, AppState>
         </ListItem>
       </List>
     );
-    const content = (<CounterContainer/>);
+    const content = (<div><CounterContainer/><CounterForm/></div>);
 
     return (
       <Provider store={store}>
