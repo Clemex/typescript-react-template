@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { WithStyles, withStyles, Paper } from 'material-ui';
-import { NumberInput } from "./ui-shared/NumberInput";
+import { NumberInput } from "./ui-shared/";
 import { Theme } from 'material-ui/styles';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import { Field, reduxForm, Form, InjectedFormProps, formValueSelector } from 'redux-form'

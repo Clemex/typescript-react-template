@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { WithStyles } from 'material-ui';
 
-import { Text } from '../ui-shared/Text';
+import { Text } from '../ui-shared/';
 
 export interface CounterDisplayProps {
   value: number;

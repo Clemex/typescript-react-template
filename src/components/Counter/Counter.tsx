@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { WithStyles, withStyles, Paper } from 'material-ui';
-import { NumberInput } from "../ui-shared/NumberInput";
-import { LabeledButton } from "../ui-shared/LabeledButton";
+import { NumberInput, LabeledButton } from "../ui-shared/";
 import { Theme } from 'material-ui/styles';
 import { defineMessages } from 'react-intl';
 import { CounterDisplay } from './CounterDisplay';
