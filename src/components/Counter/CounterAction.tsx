@@ -1,18 +1,26 @@
-// Common base action type
-export type SimpleAction<T> = { readonly type: T; }
+export type Action<T> = { readonly type: T; }
 export type ActionWithPayload<T, P> = { readonly type: T; readonly payload: P; }
 
-// Counter specific action types
-export type ReplaceAction = ActionWithPayload<'REPLACE', number>;
-export function replaceActionCreator(value: number): ReplaceAction {
-    return { type: 'REPLACE', payload: value };
+/**
+ * This Counter Action module is used to help the interaction with the counter actions.
+ * It will make the disatch easy to do and will prevent the use of a 
+ * string (the reducer action key) in multiple places of the code.
+ * 
+ * Example usage: dispatch(CounterAction.undo)
+ */
+export module CounterAction {
+    
+   export type UndoAction = Action<'COUNTER.UNDO'>;
+   export type RedoAction =  Action<'COUNTER.REDO'>;
+   export type ReplaceAction = ActionWithPayload<'COUNTER.REPLACE', number>;
+
+    export const redo = { type: 'COUNTER.REDO' } as RedoAction;
+    export const undo = { type: 'COUNTER.UNDO' } as UndoAction;
+    export const replace = { type: 'COUNTER.REPLACE'} as ReplaceAction;
+
+    export type ActionType = UndoAction | RedoAction | ReplaceAction;
+
+    export function createReplaceAction(value: number): ReplaceAction {
+        return {type: 'COUNTER.REPLACE', payload: value } as ReplaceAction;
+    }
 }
-
-export type UndoAction = SimpleAction<'UNDO'>;
-export const undoAction: UndoAction = { type: 'UNDO' }
-
-export type RedoAction = SimpleAction<'REDO'>;
-export const redoAction: RedoAction = { type: 'REDO' }
-
-// The union of all posible action types 
-export type CounterAction = ReplaceAction | UndoAction | RedoAction;

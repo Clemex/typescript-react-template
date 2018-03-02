@@ -1,22 +1,23 @@
 import * as React from 'react';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { reducer as formReducer } from 'redux-form';
 import { IntlProvider } from 'react-intl';
 import { createLogger } from 'redux-logger';
-import { CounterContainer, counterReducer } from '../components/Counter/';
-import { CounterForm } from '../components/CounterForm';
-import { MainPage } from '../components/MainPage';
-import { Text, LabeledButton } from '../components/ui-shared/';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { reducer as formReducer } from 'redux-form';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+
 import { createMuiTheme, List, ListItem, ListItemText } from 'material-ui';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Theme } from 'material-ui/styles';
+
+import { MainPage } from '../components/MainPage';
+import { CounterForm } from '../components/CounterForm';
+import { CounterContainer, counterReducer } from '../components/Counter/';
+import { Text, LabeledButton } from '../components/ui-shared/';
  
 const rootReducer = combineReducers({
     counter: counterReducer,
     form: formReducer,
   })
-
 
 const themeOverrides = {
   MuiPaper: {
@@ -26,32 +27,24 @@ const themeOverrides = {
   }
 }
 
-// Create themes:
 const lightTheme = createMuiTheme({
   palette: { type: 'light' },
   overrides: themeOverrides, 
 });
+
 const darkTheme = createMuiTheme({
   palette: { type: 'dark' },
   overrides: themeOverrides, 
 });
 
-// Creates a logger component 
-// https://www.npmjs.com/package/redux-logger
-const logger = createLogger({
-    // ...options 
-  });
 
-// Apply the redux middleware
-// https://redux.js.org/docs/advanced/Middleware.html
-const middleware = applyMiddleware(
-    // logger must be the last middleware in chain, otherwise it will log thunk and promise, not actual actions 
-    logger);
+const logger = createLogger({});
 
-// Create a store with the combined reducers and middleware
+// logger must be the last middleware in chain, otherwise it will log thunk and promise, not actual actions 
+const middleware = applyMiddleware(logger);
+
 const store = createStore(rootReducer, middleware);
 
-// The main application
 export type AppProperties = { }
 
 // Theme information is stored in app state. Optionally this could have been added 
@@ -59,7 +52,7 @@ export type AppProperties = { }
 // This is the simplest thing that could have worked 
 export type AppState = { theme: Theme };
 
-// The main application component, which stores theme information in a local state object. 
+
 export class App extends React.PureComponent<AppProperties, AppState> 
 {
   state: AppState = { theme: lightTheme }

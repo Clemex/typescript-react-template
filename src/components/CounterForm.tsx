@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { WithStyles, withStyles, Paper } from 'material-ui';
-import { NumberInput } from "./ui-shared/";
 import { Theme } from 'material-ui/styles';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import { Field, reduxForm, Form, InjectedFormProps, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux';
 
+import { NumberInput } from "./ui-shared/";
+import { CounterAction } from "./Counter/CounterAction";
+
 
 const max100 = value  => value && value > 100 ? "We don't accept values over 100 via the form, due to limited internet bandwidth" : null;
 
 const NumberInputForm = (props) => (
-<div>
+  <div>
     <NumberInput
       label={props.label || ''}
       value={props.input.value}
@@ -40,7 +42,7 @@ export class BaseCounterForm extends React.PureComponent<CounterFormProperties, 
   }
   render(): React.ReactNode {
     const submit = ({value}, dispatch) => {
-      dispatch({ type: 'REPLACE', payload: value });
+      dispatch(CounterAction.createReplaceAction(value));
     }
     const { pristine, submitting, reset, handleSubmit } = this.props;
     return (
