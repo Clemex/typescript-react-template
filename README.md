@@ -1,6 +1,8 @@
-# A Template for TypeScript Projects using React, Redux, and Fabric
+# A Template for TypeScript Projects using React and Redux
 
-This project is a template project developed by Clemex Technologies for bootstrapping new React/Redux applications in TypeScript. We started from the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) from Microsoft. 
+This project is a simple template project developed by [Clemex Technologies](https://github.com/Clemex) for bootstrapping new React/Redux applications using TypeScript. We started from the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) from Microsoft. 
+
+The project contains the source code for a simple counter application that demonstrates the usage of React, Redux, Redux-Form, Redux-Logger, Material-UI, and React-UI all written in TypeScript. This was inspired by [the Counter project by Leyka](https://github.com/Leyka/learning-react/tree/master/react-redux) a simple app which increments or decrements a counter using React/Redux which is based on [the React/Redux counter example](https://github.com/reactjs/redux/tree/master/examples/counter/src).
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -33,6 +35,10 @@ This project is a template project developed by Clemex Technologies for bootstra
 
 # Motivation
 
+[React](typescriptlang.org) is a very powerful UI creation framework for JavaScript applications, and [Redux](https://redux.js.org/) is a useful and simple state management system for JavaScript applications. 
+
+At Clemex we have found that React and Redux works very well with [TypeScript](typescriptlang.org), but it is not always obvious what the best practices are and what libraries work best with this stack for production code. 
+
 There are a couple of pre-existing React/Redux/TypeScript starters and template projects such as the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) we started from, but we wanted to create a starter kit that more closely resembled a real production development stack, and that contained a template example for new programmers onboarding on our team. 
 
 # Project Structure 
@@ -53,19 +59,14 @@ This Boostrap project uses the following libraries:
 
 * [React](https://github.com/Clemex/typescript-react-template) - UI Front-end 
 * [React Intl](https://github.com/yahoo/react-intl) - Application internationalization support 
-* [React Router](https://github.com/ReactTraining/react-router) - Declarative URL routing 
 * [Redux](https://redux.js.org/) - Centralized state management
 * [Redux Form](https://redux-form.com/7.2.1/) - Form state management via Redux
 * [Redux Logger](https://github.com/evgenyrodionov/redux-logger) - Redux logger middleware
-* [Redux Promise](https://github.com/pburtchaell/redux-promise-middleware) - Robust handling of async code in Redux,  enables optimistic updates and dispatches pending, fulfilled and rejected actions. 
-* [Redux Thunk](https://github.com/gaearon/redux-thunk) - Middleware for writing action creators that return a function instead of an action, used to chain async actions
 * [Material UI](https://www.material-ui.com/) - React components that implement Google's Material Design
-* [Fabric.js](https://www.fabricjs.com) - A powerful and simple Javascript HTML5 canvas library
-* [JSS](https://github.com/cssinjs/jss) - Using JavaScript to describe styles in a declarative and maintainable way
 
 ### Development Tools
 
-We are using the following development tools:
+At Clemex we are using the following development tools:
 
 * [TypeScript](https://www.typescriptlang.org/) : Statically typed Javascript that compiles to plain Javascript
 * [TS-Lint](https://palantir.github.io/tslint/) : Linter for the TypeScript language
@@ -79,15 +80,40 @@ We are using the following development tools:
 * [Redux DevTools for Chrome](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
 * [Visual Studio Code](https://code.visualstudio.com/) : Source code editor by Microsoft for Windows, Linux and macOS
 
-# Development Principles
+# Development Principles and Best Practices
 
-The principle we are developing from are:
+The primary principles we try to follow at Clemex are:
+
 * DRY (Don't Repeat Yourself)
 * YAGNI (You Aren't Going to Need It)
 * KISS (Keep it Stupidly Simple)
 * Don't make me think
 
 Also see the [Zen of Python](https://www.python.org/dev/peps/pep-0020/). 
+
+For more important principles see [The principles of good programming](https://www.artima.com/weblogs/viewpost.jsp?thread=331531).
+
+## Best Practices
+
+The following are some of our recommended best practices for React/Redux application development in TypeScript. 
+
+* We recommend using Classes over Stateless Functional Components (SFC) 
+* Classes should by default derive from `PureComponent` 
+* Minimize usage of state in a component, unless for purely presentation purposes
+* If using state in a component, put it in a `state` member variable
+* All changes to state in a component should happen through a function passed to the `setState` member function
+* Minimize directly coupling of components to the various imported libraries 
+* Avoid using `shouldComponentUpdate` if possible, use it as a last resort 
+* Avoid using `default export`, names should be consistent across modules
+* Prefer `const` over `let` and `var`, and prefer `let` over `var`
+* By default make class members `readonly`
+* Usually provide an exported named properties type
+* Prefer lots of small components to large monolithic components
+* Preferably import only the names you need from a module, not everything
+* Document your code, especially when doing some non-idiomatic
+* Use message objects, not raw strings, so that your UI can be easily internationalized and made accessible
+* Two spaces for tabs in JS[X]/TS[X] code, four spaces for JSON
+* Use ES-Lint with the recommended rules 
 
 # Reading List
 
@@ -148,33 +174,9 @@ For trouble-shooting:
 * [TypeScript Deep Dive](https://basarat.gitbooks.io/typescript/content/docs/getting-started.html)
 * [TypeScript Advanced Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
 
-# Examples
-
-* [Counter](https://github.com/Leyka/learning-react/tree/master/react-redux) : A simple app which increments or decrements a counter using React/Redux
-
 # VS Code Support
 
 We have provided a [Visual Studio Code snippet](https://code.visualstudio.com/docs/editor/userdefinedsnippets) for facilitating adding of components. 
-
-# Best Practices
-
-* We recommend using Classes over Stateless Functional Components (SFC) 
-* Classes should by default derive from `PureComponent` 
-* Minimize usage of state in a component, unless for purely presentation purposes
-* If using state in a component, put it in a `state` member variable
-* All changes to state in a component should happen through a function passed to the `setState` member function
-* Minimize directly coupling of components to the various imported libraries 
-* Avoid using `shouldComponentUpdate` if possible, use it as a last resort 
-* Avoid using `default export`, names should be consistent across modules
-* Prefer `const` over `let` and `var`, and prefer `let` over `var`
-* By default make class members `readonly`
-* Usually provide an exported named properties type
-* Prefer lots of small components to large monolithic components
-* Preferably import only the names you need from a module, not everything
-* Document your code, especially when doing some non-idiomatic
-* Use message objects, not raw strings, so that your UI can be easily internationalized and made accessible
-* Two spaces for tabs in JS[X]/TS[X] code, four spaces for JSON
-* Use ES-Lint with the recommended rules 
 
 # FAQ
 
