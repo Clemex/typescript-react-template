@@ -16,6 +16,7 @@ The project contains the source code for a simple counter application that demon
 - [Libraries](#libraries)
     - [Development Tools](#development-tools)
 - [Development Principles](#development-principles)
+  - [Best Practices](#best-practices)
 - [Reading List](#reading-list)
   - [React](#react)
   - [Redux](#redux)
@@ -26,10 +27,7 @@ The project contains the source code for a simple counter application that demon
   - [React with TypeScript](#react-with-typescript)
   - [Redux with TypeScript](#redux-with-typescript)
   - [TypeScript](#typescript)
-- [Examples](#examples)
-- [VS Code Support](#vs-code-support)
-- [Best Practices](#best-practices)
-- [FAQ](#faq)
+  - [VS Code Support](#vs-code-support)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -64,7 +62,7 @@ This Boostrap project uses the following libraries:
 * [Redux Logger](https://github.com/evgenyrodionov/redux-logger) - Redux logger middleware
 * [Material UI](https://www.material-ui.com/) - React components that implement Google's Material Design
 
-### Development Tools
+## Development Tools
 
 At Clemex we are using the following development tools:
 
