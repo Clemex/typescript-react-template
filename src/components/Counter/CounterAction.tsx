@@ -8,19 +8,19 @@ export type ActionWithPayload<T, P> = { readonly type: T; readonly payload: P; }
  * 
  * Example usage: dispatch(CounterAction.undo)
  */
-export module CounterAction {
-    
-   export type UndoAction = Action<'COUNTER.UNDO'>;
-   export type RedoAction =  Action<'COUNTER.REDO'>;
-   export type ReplaceAction = ActionWithPayload<'COUNTER.REPLACE', number>;
+export module CounterAction 
+{    
+  export type UndoAction = Action<'COUNTER.UNDO'>;
+  export type RedoAction =  Action<'COUNTER.REDO'>;
+  export type ReplaceAction = ActionWithPayload<'COUNTER.REPLACE', number>;
 
-    export const redo = { type: 'COUNTER.REDO' } as RedoAction;
-    export const undo = { type: 'COUNTER.UNDO' } as UndoAction;
-    export const replace = { type: 'COUNTER.REPLACE'} as ReplaceAction;
+  export const redo = { type: 'COUNTER.REDO' } as RedoAction;
+  export const undo = { type: 'COUNTER.UNDO' } as UndoAction;
+  export const replace = { type: 'COUNTER.REPLACE' } as ReplaceAction;
 
-    export type ActionType = UndoAction | RedoAction | ReplaceAction;
+  export type ActionType = UndoAction | RedoAction | ReplaceAction;
 
-    export function createReplaceAction(value: number): ReplaceAction {
-        return {type: 'COUNTER.REPLACE', payload: value } as ReplaceAction;
-    }
+  export function createReplaceAction(value: number): ReplaceAction {
+    return { type: 'COUNTER.REPLACE', payload: value } as ReplaceAction;
+  }
 }

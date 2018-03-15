@@ -4,7 +4,9 @@ import Typography from 'material-ui/Typography/Typography';
 import { StringHelper } from "../../helpers/StringHelper";
 import { TextProperties } from "../../helpers/Types";
 
-export class Text extends React.PureComponent<TextProperties> {
+/** A wrapper around the typography component of Material UI. */
+export class Text extends React.PureComponent<TextProperties> 
+{
     render(): React.ReactNode {
         return (
             this.props.text

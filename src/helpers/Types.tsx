@@ -1,29 +1,27 @@
-import { WithStyles } from 'material-ui';
 import { FormattedMessage } from 'react-intl';
 import { Style } from 'material-ui/styles/createTypography';
 
-// Can be used to mix in styling properties (e.g. className) to another properties object
-export type BaseStyleProps = Partial<WithStyles<'root'>>;
-
-// Represents either plain text string or a message descriptor 
+/** Represents either plain text string or an internationalizable message descriptor */
 export type StringOrMessage = string | FormattedMessage.MessageDescriptor;
 
-// Properties of a button component
-export type ButtonProperties = BaseStyleProps & {
-    label?: StringOrMessage;
+/** Properties for a labeled button component. */
+export interface LabeledButtonProperties {
+    label: StringOrMessage;
     click: () => void;
 }
 
-// Properties of a number input component
-export type NumberInputProps = BaseStyleProps & {
+/** Properties for an optionally labeled number input component. */
+export interface NumberInputProps {
     label?: StringOrMessage;
     value: number;
-    change: (value: number) => void;
+    onChange: (value: number) => void;
+    error?: boolean;
 }
 
-// Properties for a text component, type can be one of:
-// | 'display1' | 'display2' | 'display3' | 'display4' | 'headline' | 'title' | 'subheading' | 'body1' | 'body2'  | 'caption';
-export type TextProperties = BaseStyleProps & {
+/** Properties for a text component, type can be one of:
+ *  | 'display1' | 'display2' | 'display3' | 'display4' | 'headline' | 'title' | 'subheading' | 'body1' | 'body2'  | 'caption'; 
+ * */
+export interface TextProperties {
     text?: StringOrMessage;
     type?: Style;
 }

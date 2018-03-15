@@ -1,60 +1,44 @@
 import * as React from 'react';
-import { WithStyles, withStyles, Paper } from 'material-ui';
-import { Theme } from 'material-ui/styles';
-import { defineMessages, FormattedMessage } from 'react-intl';
-import { Field, reduxForm, Form, InjectedFormProps, formValueSelector } from 'redux-form'
+import { Field, reduxForm, Form, InjectedFormProps } from 'redux-form'
 import { connect } from 'react-redux';
 
-import { NumberInput } from "./ui-shared/";
+import { Text, NumberInputReduxForm } from "./ui-shared/";
 import { CounterAction } from "./Counter/CounterAction";
+import { CounterValueProps } from './Counter';
 
-
-const max100 = value  => value && value > 100 ? "We don't accept values over 100 via the form, due to limited internet bandwidth" : null;
-
-const NumberInputForm = (props) => (
-  <div>
-    <NumberInput
-      label={props.label || ''}
-      value={props.input.value}
-      change={v => props.input.onChange(v)}
-      {...props} 
-    />
-    {props.meta.error && <span>{props.meta.error}</span>}
-  </div>
-  );
-
-export type CounterValueProperties = {
-  value: number;
+/** A validation function used by the field. */
+function max100(value: any) : React.ReactNode {
+  return (value && value > 100) 
+    ? <Text text="We don't accept values over 100"/>
+    : null;
 }
 
-export type CounterFormProperties = InjectedFormProps<{}, CounterValueProperties>;
+/** The properties of the Counter form component. */
+export type CounterFormProperties = InjectedFormProps<{}, CounterValueProps>;
 
-// Base counter form 
-export class BaseCounterForm extends React.PureComponent<CounterFormProperties, {invalid:boolean}> {
-  constructor( props ) {
-    super(props);
-    this.state = {
-      invalid: false
-    };
+
+/** An example of using Redux-form. */
+export class BaseCounterForm extends React.PureComponent<CounterFormProperties> 
+{
+  submit({value}, dispatch) {
+    dispatch(CounterAction.createReplaceAction(value));
   }
-  componentWillReceiveProps( nextProps: CounterFormProperties ) {
-    this.setState({ invalid: nextProps.invalid })
-  }
+
   render(): React.ReactNode {
-    const submit = ({value}, dispatch) => {
-      dispatch(CounterAction.createReplaceAction(value));
-    }
-    const { pristine, submitting, reset, handleSubmit } = this.props;
+    const { 
+      pristine, submitting, reset, handleSubmit 
+    } = this.props;
+    
     return (
-      <Form onSubmit={handleSubmit(submit)}>
+      <Form onSubmit={handleSubmit(this.submit)}>
         <div>
           <Field
             name='value'
-            component={NumberInputForm}
+            component={NumberInputReduxForm}
             label="Input Value"
-            validate={max100}
+            validate={max100}         
           />
-          <button type="submit" disabled={ this.state.invalid ||  pristine || submitting  }>
+          <button type="submit" disabled={ this.props.invalid ||  pristine || submitting  }>
             Submit
           </button>
           <button type="button" disabled={pristine || submitting} onClick={reset}>
@@ -66,10 +50,16 @@ export class BaseCounterForm extends React.PureComponent<CounterFormProperties, 
   }
 }
 
-const mapStateToProps = (state: any): Partial<CounterValueProperties> => ({
-   value: state.counter.counter as number 
+/** Create a function for creating a Redux form, along with the label used for storing the form data,  */
+export const createCounterForm = reduxForm<{}, Partial<CounterValueProps>>({ form: 'CounterForm' });
+
+/** Call the create Counter Form higher-order component to actually create the component.  */
+export const UnconnectedCounterForm = createCounterForm(BaseCounterForm);
+
+/** The function for getting the current counter state from the store. */
+export const mapStateToProps = (state: any): Partial<CounterValueProps> => ({
+   value: state.counter.value as number 
 });
 
-export const createCounterForm = reduxForm<{}, Partial<CounterValueProperties>>({ form: 'CounterForm' });
-export const UnconnectedCounterForm = createCounterForm(BaseCounterForm);
+/** Create the counter  */
 export const CounterForm = connect(mapStateToProps)(UnconnectedCounterForm);

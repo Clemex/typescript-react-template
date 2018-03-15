@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { WithStyles } from 'material-ui';
-
 import { Text } from '../ui-shared/';
 
+/** The property of the CounterDisplay component. */
 export interface CounterDisplayProps {
   value: number;
   label: string;
 }
 
+/** A component that prints out the counter value. */
 export class CounterDisplay extends React.PureComponent<CounterDisplayProps> {
   render() {
      return (
