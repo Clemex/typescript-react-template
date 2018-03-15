@@ -7,12 +7,10 @@ import { LabeledButtonProperties } from "../../helpers/Types";
 /** Simple wrapper around Material UI button that accepts React international messages or plain text labels. */
 export class LabeledButton extends React.PureComponent<LabeledButtonProperties> 
 {
-    readonly clickHandler = () => this.props.click();
-
     render(): React.ReactNode 
     {
         return (
-            <Button onClick={this.clickHandler}>
+            <Button onClick={this.props.onClick}>
                 {StringHelper.FormattedMessageOrText(this.props.label)}
             </Button>
         );

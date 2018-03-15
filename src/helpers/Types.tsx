@@ -7,7 +7,7 @@ export type StringOrMessage = string | FormattedMessage.MessageDescriptor;
 /** Properties for a labeled button component. */
 export interface LabeledButtonProperties {
     label: StringOrMessage;
-    click: () => void;
+    onClick: () => void;
 }
 
 /** Properties for an optionally labeled number input component. */

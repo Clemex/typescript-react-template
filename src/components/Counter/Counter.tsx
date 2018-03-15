@@ -61,12 +61,12 @@ export class Counter extends React.PureComponent<CounterProps>
           <NumberInput label={messages.counter_label} {...this.props}/>
         </div>
         <div>
-          <LabeledButton label={messages.increment} click={this.incHandler} {...this.props}/>
-          <LabeledButton label={messages.decrement} click={this.decHandler} {...this.props}/>
+          <LabeledButton label={messages.increment} onClick={this.incHandler} {...this.props}/>
+          <LabeledButton label={messages.decrement} onClick={this.decHandler} {...this.props}/>
         </div>
         <div>
-           <LabeledButton label={messages.undo} click={this.undoHandler} {...this.props}/>
-           <LabeledButton label={messages.redo} click={this.redoHandler} {...this.props}/>
+           <LabeledButton label={messages.undo} onClick={this.undoHandler} {...this.props}/>
+           <LabeledButton label={messages.redo} onClick={this.redoHandler} {...this.props}/>
         </div>
       </Paper>
     );
