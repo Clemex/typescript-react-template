@@ -9,9 +9,16 @@ export class LabeledButton extends React.PureComponent<LabeledButtonProperties>
 {
     render(): React.ReactNode 
     {
+        const content = this.props.label 
+            ? StringHelper.FormattedMessageOrText(this.props.label)
+            : null;        
         return (
-            <Button onClick={this.props.onClick}>
-                {StringHelper.FormattedMessageOrText(this.props.label)}
+            <Button 
+                {...this.props}
+                type={this.props.submit? "submit" : "button"}
+            >
+                {content}
+                {this.props.children}
             </Button>
         );
     }
