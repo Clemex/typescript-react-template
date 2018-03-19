@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@behance/fabric": "^1.6.1-nodeless",
     "@types/react-redux": "^5.0.14",
     "@types/redux-form": "^7.0.13",
     "autoprefixer": "7.1.6",
