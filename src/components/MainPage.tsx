@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { WithStyles, Grid, Paper } from 'material-ui';
+import { Grid, Paper } from 'material-ui';
 
-export type MainPageProperties = {
+/** Used for passing sidebar, header, and main formatted content. */
+export interface MainPageProperties {
     sidebar: React.ReactNode;
     header: React.ReactNode;
-    content: React.ReactNode;
+    main: React.ReactNode;
 }
 
+/** A simple predefined layout with a header, sidebar, and main body. */
 export class MainPage extends React.PureComponent<MainPageProperties> {
   render(): React.ReactNode {
      return (
@@ -21,7 +23,7 @@ export class MainPage extends React.PureComponent<MainPageProperties> {
                     {this.props.sidebar}
                 </Grid>
                 <Grid item xs={10}>
-                    {this.props.content}
+                    {this.props.main}
                 </Grid>        
             </Grid>
         </Paper>

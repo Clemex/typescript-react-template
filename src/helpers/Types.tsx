@@ -1,29 +1,35 @@
-import { WithStyles } from 'material-ui';
 import { FormattedMessage } from 'react-intl';
 import { Style } from 'material-ui/styles/createTypography';
+import { MouseEvent } from 'react';
 
-// Can be used to mix in styling properties (e.g. className) to another properties object
-export type BaseStyleProps = Partial<WithStyles<'root'>>;
-
-// Represents either plain text string or a message descriptor 
+/** Represents either plain text string or an internationalizable message descriptor */
 export type StringOrMessage = string | FormattedMessage.MessageDescriptor;
 
-// Properties of a button component
-export type ButtonProperties = BaseStyleProps & {
-    label?: StringOrMessage;
-    click: () => void;
+/** Common properties for most of our components. */
+export interface BaseProperties {
+    className?: string;
 }
 
-// Properties of a number input component
-export type NumberInputProps = BaseStyleProps & {
+/** Properties for a labeled button component. */
+export interface LabeledButtonProperties extends BaseProperties {
+    submit?: boolean;
+    disabled?: boolean;
+    label?: StringOrMessage;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
+}
+
+/** Properties for an optionally labeled number input component. */
+export interface NumberInputProps extends BaseProperties {
     label?: StringOrMessage;
     value: number;
-    change: (value: number) => void;
+    onChange: (value: number) => void;
+    error?: boolean;
 }
 
-// Properties for a text component, type can be one of:
-// | 'display1' | 'display2' | 'display3' | 'display4' | 'headline' | 'title' | 'subheading' | 'body1' | 'body2'  | 'caption';
-export type TextProperties = BaseStyleProps & {
+/** Properties for a text component, type can be one of:
+ *  | 'display1' | 'display2' | 'display3' | 'display4' | 'headline' | 'title' | 'subheading' | 'body1' | 'body2'  | 'caption'; 
+ * */
+export interface TextProperties extends BaseProperties {
     text?: StringOrMessage;
-    type?: Style;
+    textStyle?: Style;
 }

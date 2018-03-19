@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { WithStyles, withStyles, Paper } from 'material-ui';
 import { NumberInput, LabeledButton } from "../ui-shared/";
-import { Theme } from 'material-ui/styles';
 import { defineMessages } from 'react-intl';
 import { CounterDisplay } from './CounterDisplay';
+import { Paper } from 'material-ui';
 
-// Localizable strirngs 
+/** Localizable strings from React-intl. */
 const messages = defineMessages({
   current_counter_label: {
     id: "current_counter_label",
@@ -33,28 +32,28 @@ const messages = defineMessages({
   }
 });
 
-// Styles 
-const styles = {
-  root: {
-    backgroundColor: 'red',
-  },
-} as React.CSSProperties;
-
-
-export type CounterProps = WithStyles<'root'> & {
+/** A type for wrapping the Counter Varlue */
+export interface CounterValueProps {
   value: number;
-  change: (value: number) => void;
-  undo: () => void;
-  redo: () => void;
 }
 
-// Main presentation component: without styles
-export class UnstyledCounter extends React.PureComponent<CounterProps> {
-  render() {
-    const inc = () => this.props.change(this.props.value + 1);
-    const dec = () => this.props.change(this.props.value - 1);
-    const undo = () => this.props.undo();
-    const redo = () => this.props.redo();
+/** The properties passed to the counter component. */
+export interface CounterProps extends CounterValueProps {
+  onChange: (value: number) => void;
+  onUndo: () => void;
+  onRedo: () => void;
+}
+
+/** Main presentation component of the counter. */
+export class Counter extends React.PureComponent<CounterProps> 
+{
+  readonly incHandler = () => this.props.onChange(this.props.value + 1);
+  readonly decHandler = () => this.props.onChange(this.props.value - 1);
+  readonly undoHandler = () => this.props.onUndo();
+  readonly redoHandler = () => this.props.onRedo();
+
+  render() 
+  {
     return (
        <Paper elevation={4}>
         <div>
@@ -62,17 +61,14 @@ export class UnstyledCounter extends React.PureComponent<CounterProps> {
           <NumberInput label={messages.counter_label} {...this.props}/>
         </div>
         <div>
-          <LabeledButton label={messages.increment} click={inc} {...this.props}/>
-          <LabeledButton label={messages.decrement} click={dec} {...this.props}/>
+          <LabeledButton label={messages.increment} onClick={this.incHandler} {...this.props}/>
+          <LabeledButton label={messages.decrement} onClick={this.decHandler} {...this.props}/>
         </div>
         <div>
-           <LabeledButton label={messages.undo} click={undo} {...this.props}/>
-           <LabeledButton label={messages.redo} click={redo} {...this.props}/>
+           <LabeledButton label={messages.undo} onClick={this.undoHandler} {...this.props}/>
+           <LabeledButton label={messages.redo} onClick={this.redoHandler} {...this.props}/>
         </div>
       </Paper>
     );
   }
 }
-
-// Applies the specified styles 
-export const Counter = withStyles(styles)(UnstyledCounter);
