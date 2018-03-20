@@ -42,6 +42,8 @@ export interface CounterProps extends CounterValueProps {
   onChange: (value: number) => void;
   onUndo: () => void;
   onRedo: () => void;
+  canUndo: boolean;
+  canRedo: boolean;
 }
 
 /** Main presentation component of the counter. */
@@ -65,8 +67,8 @@ export class Counter extends React.PureComponent<CounterProps>
           <LabeledButton label={messages.decrement} onClick={this.decHandler} {...this.props}/>
         </div>
         <div>
-           <LabeledButton label={messages.undo} onClick={this.undoHandler} {...this.props}/>
-           <LabeledButton label={messages.redo} onClick={this.redoHandler} {...this.props}/>
+           <LabeledButton label={messages.undo} disabled={!this.props.canUndo} onClick={this.undoHandler} {...this.props}/>
+           <LabeledButton label={messages.redo} disabled={!this.props.canRedo} onClick={this.redoHandler} {...this.props}/>
         </div>
       </Paper>
     );

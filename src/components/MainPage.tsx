@@ -13,6 +13,9 @@ export class MainPage extends React.PureComponent<MainPageProperties> {
   render(): React.ReactNode {
      return (
         <Paper>
+            <a href="https://github.com/Clemex/typescript-react-template">
+                <img style={{position: "absolute", top: 0, right: 0, border: 0}} src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub" />
+            </a>
             <Grid container spacing={24}>
                 <Grid item xs={2}>
                 </Grid>

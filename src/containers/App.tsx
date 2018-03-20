@@ -5,7 +5,7 @@ import { createLogger } from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
-import { createMuiTheme, List, ListItem, ListItemText } from 'material-ui';
+import { createMuiTheme, List, ListItem, ListItemText, Divider, Paper } from 'material-ui';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Theme } from 'material-ui/styles';
 import { blue } from 'material-ui/colors';
@@ -86,14 +86,17 @@ export class App extends React.PureComponent<{}, AppState>
       <Display1Text text={messages.app_title}/>);
 
     const sidebar = (
-      <List component="nav">  
-        <ListItem button onClick={this.setLightTheme}>
-          <ListItemText primary="light"/>
-        </ListItem>
-        <ListItem button onClick={this.setDarkTheme}>
-          <ListItemText primary="dark"/>
-        </ListItem>
-      </List>
+      <Paper>
+        <List component="nav">  
+          <ListItem button onClick={this.setLightTheme}>
+            <ListItemText primary="light"/>
+          </ListItem>
+          <Divider />
+          <ListItem button onClick={this.setDarkTheme}>
+            <ListItemText primary="dark"/>
+          </ListItem>
+        </List>
+      </Paper>
     );
     const content = (<div><CounterContainer/><CounterForm/></div>);
 
