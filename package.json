@@ -4,7 +4,7 @@
   "private": false,
   "license": "MIT",
   "repository": "github:Clemex/typescript-react-template",
-  "homepage": "https://github.com/Clemex/typescript-react-template",
+  "homepage": "https://clemex.github.io/Clemex/typescript-react-template",
   "description": "A starter template project for bootstrapping new React/Redux applications using TypeScript",
   "bugs": "https://github.com/Clemex/typescript-react-template/issues",
   "author": "Clemex Technologies (https://github.com/Clemex/)",
