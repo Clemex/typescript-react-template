@@ -1,7 +1,12 @@
 {
   "name": "template-app",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/Clemex/typescript-react-template",
+  "description": "A starter template project for bootstrapping new React/Redux applications using TypeScript",
+  "bugs": "https://github.com/Clemex/typescript-react-template/issues",
+  "author": "Clemex Technologies (https://github.com/Clemex/)",  
   "dependencies": {
     "@types/react-redux": "^5.0.14",
     "@types/redux-form": "^7.0.13",
@@ -97,7 +102,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "/home/cactus/clemex/typescript-react-template/tsconfig.test.json"
+        "tsConfigFile": "tsconfig.test.json"
       }
     }
   },
