@@ -54,9 +54,9 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js",    
     "test": "node scripts/test.js --env=jsdom",
-    "gitpages": "cpx build/*.* docs",
+    "gitpages": "cpx build/**/* docs",
     "commit": "git add . && git commit -m",
     "push": "git push",
     "deploy": "npm run build && npm run gitpages && npm run commit -- \"Deploy new version\" && npm run push"
