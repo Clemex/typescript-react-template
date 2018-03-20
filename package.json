@@ -56,8 +56,10 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "deploy": "cpx build/*.* docs",
-    "gitcommit": "git add . && git commit -m"
+    "gitpages": "cpx build/*.* docs",
+    "commit": "git add . && git commit -m",
+    "push": "git push",
+    "deploy": "npm run build && npm run gitpages && npm run commit -- \"Deploy new version\" && npm run push"
   },
   "devDependencies": {
     "@types/jest": "^22.0.1",
