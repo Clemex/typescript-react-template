@@ -14,7 +14,9 @@ import { MainPage } from '../components/MainPage';
 import { CounterForm } from '../components/CounterForm';
 import { CounterContainer, counterReducer } from '../components/Counter/';
 import { Display1Text } from '../components/ui-shared/';
- 
+
+require('typeface-roboto');
+
 /** The main 'reducer' for Redux state, which maps actions to state transforms. */
 const rootReducer = combineReducers({
     counter: counterReducer,
