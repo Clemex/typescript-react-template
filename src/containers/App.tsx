@@ -5,7 +5,7 @@ import { createLogger } from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
-import { createMuiTheme, List, ListItem, ListItemText } from 'material-ui';
+import { createMuiTheme, List, ListItem, ListItemText, Divider, Paper, Grid } from 'material-ui';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Theme } from 'material-ui/styles';
 import { blue } from 'material-ui/colors';
@@ -14,7 +14,9 @@ import { MainPage } from '../components/MainPage';
 import { CounterForm } from '../components/CounterForm';
 import { CounterContainer, counterReducer } from '../components/Counter/';
 import { Display1Text } from '../components/ui-shared/';
- 
+
+require('typeface-roboto');
+
 /** The main 'reducer' for Redux state, which maps actions to state transforms. */
 const rootReducer = combineReducers({
     counter: counterReducer,
@@ -86,18 +88,30 @@ export class App extends React.PureComponent<{}, AppState>
       <Display1Text text={messages.app_title}/>);
 
     const sidebar = (
-      <List component="nav">  
-        <ListItem button onClick={this.setLightTheme}>
-          <ListItemText primary="light"/>
-        </ListItem>
-        <ListItem button onClick={this.setDarkTheme}>
-          <ListItemText primary="dark"/>
-        </ListItem>
-      </List>
+      <Paper>
+        <List component="nav">  
+          <ListItem button onClick={this.setLightTheme}>
+            <ListItemText primary="light"/>
+          </ListItem>
+          <Divider />
+          <ListItem button onClick={this.setDarkTheme}>
+            <ListItemText primary="dark"/>
+          </ListItem>
+        </List>
+      </Paper>
     );
-    const content = (<div><CounterContainer/><CounterForm/></div>);
+    const content = (
+      <Grid container spacing={8}>
+        <Grid item xs={12}>
+          <CounterContainer/>
+        </Grid>
+       <Grid item xs={12}>
+          <CounterForm/>
+        </Grid>        
+      </Grid>);
 
-    return (<Provider store={store}>
+    return (
+    <Provider store={store}>
       <IntlProvider locale="en">
         <MuiThemeProvider theme={this.state.theme}>
           <MainPage
@@ -107,6 +121,7 @@ export class App extends React.PureComponent<{}, AppState>
           />
         </MuiThemeProvider>
       </IntlProvider>
-    </Provider>);
+    </Provider>
+    );
   }
 }

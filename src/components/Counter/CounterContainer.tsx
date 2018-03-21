@@ -14,7 +14,11 @@ export class CounterState {
 
 /** A function used by React-Redux for mapping the state to the properties used by the counter. */
 export function mapStateToProps(state: any): Partial<CounterProps> {
-  return { value: state.counter.value as number };
+  return { 
+    value: state.counter.value as number,
+    canUndo: state.counter.undoIndex > 0,
+    canRedo: state.counter.undoIndex < state.counter.history.length - 1, 
+  };
 }
   
 /** A function used by React-Redux for mapping of dispatch to properties */
