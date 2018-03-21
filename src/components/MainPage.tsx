@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Paper } from 'material-ui';
+import { Grid, AppBar, Toolbar, Typography, Button } from 'material-ui';
 
 /** Used for passing sidebar, header, and main formatted content. */
 export interface MainPageProperties {
@@ -12,16 +12,18 @@ export interface MainPageProperties {
 export class MainPage extends React.PureComponent<MainPageProperties> {
   render(): React.ReactNode {
      return (
-        <Paper>
-            <a href="https://github.com/Clemex/typescript-react-template">
-                <img style={{position: "absolute", top: 0, right: 0, border: 0}} src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub" />
-            </a>
-            <Grid container spacing={24}>
-                <Grid item xs={2}>
-                </Grid>
-                <Grid item xs={10}>
-                    {this.props.header}
-                </Grid>
+        <div id="main">
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="title" style={{flex:1}}>
+                    TypeScript React Template Application
+                    </Typography>
+                    <a href="https://github.com/clemex/typescript-react-template">
+                        <Button>Fork me on GitHub!</Button>
+                    </a>
+                </Toolbar>
+            </AppBar>
+            <Grid container spacing={8}>
                 <Grid item xs={2}>
                     {this.props.sidebar}
                 </Grid>
@@ -29,7 +31,7 @@ export class MainPage extends React.PureComponent<MainPageProperties> {
                     {this.props.main}
                 </Grid>        
             </Grid>
-        </Paper>
+        </div>
       );
   }
 }

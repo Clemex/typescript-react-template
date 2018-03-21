@@ -5,7 +5,7 @@ import { createLogger } from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
-import { createMuiTheme, List, ListItem, ListItemText, Divider, Paper } from 'material-ui';
+import { createMuiTheme, List, ListItem, ListItemText, Divider, Paper, Grid } from 'material-ui';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Theme } from 'material-ui/styles';
 import { blue } from 'material-ui/colors';
@@ -98,9 +98,18 @@ export class App extends React.PureComponent<{}, AppState>
         </List>
       </Paper>
     );
-    const content = (<div><CounterContainer/><CounterForm/></div>);
+    const content = (
+      <Grid container spacing={8}>
+        <Grid item xs={12}>
+          <CounterContainer/>
+        </Grid>
+       <Grid item xs={12}>
+          <CounterForm/>
+        </Grid>        
+      </Grid>);
 
-    return (<Provider store={store}>
+    return (
+    <Provider store={store}>
       <IntlProvider locale="en">
         <MuiThemeProvider theme={this.state.theme}>
           <MainPage
@@ -110,6 +119,7 @@ export class App extends React.PureComponent<{}, AppState>
           />
         </MuiThemeProvider>
       </IntlProvider>
-    </Provider>);
+    </Provider>
+    );
   }
 }
