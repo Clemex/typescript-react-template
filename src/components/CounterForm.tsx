@@ -23,7 +23,11 @@ const NumberInputForm = (props) => (
   </div>
   );
 
-export type CounterValueProperties = {
+export interface CounterValueProperties {
+  value: number;
+}
+
+export interface CounterFormData {
   value: number;
 }
 
@@ -40,13 +44,17 @@ export class BaseCounterForm extends React.PureComponent<CounterFormProperties, 
   componentWillReceiveProps( nextProps: CounterFormProperties ) {
     this.setState({ invalid: nextProps.invalid })
   }
+  readonly myHandleSubmit = (values: CounterFormData, dispatch:any, props: CounterValueProperties ) => {
+    console.log(values);
+    console.log(dispatch);
+    console.log(props);
+    dispatch(CounterAction.createReplaceAction(values.value));
+  }
+
   render(): React.ReactNode {
-    const submit = ({value}, dispatch) => {
-      dispatch(CounterAction.createReplaceAction(value));
-    }
     const { pristine, submitting, reset, handleSubmit } = this.props;
     return (
-      <Form onSubmit={handleSubmit(submit)}>
+      <Form onSubmit={handleSubmit(this.myHandleSubmit)}>
         <div>
           <Field
             name='value'
