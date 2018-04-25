@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { WithStyles, Grid, Paper } from 'material-ui';
+import { Grid, Paper } from 'material-ui';
 
 export type MainPageProperties = {
     sidebar: React.ReactNode;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { WithStyles, withStyles, Paper } from 'material-ui';
 import { Theme } from 'material-ui/styles';
 import { defineMessages, FormattedMessage } from 'react-intl';
@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 import { NumberInput } from "./ui-shared/";
 import { CounterAction } from "./Counter/CounterAction";
-
 
 const max100 = value  => value && value > 100 ? "We don't accept values over 100 via the form, due to limited internet bandwidth" : null;
 
@@ -41,13 +40,12 @@ export class BaseCounterForm extends React.PureComponent<CounterFormProperties, 
       invalid: false
     };
   }
+
   componentWillReceiveProps( nextProps: CounterFormProperties ) {
     this.setState({ invalid: nextProps.invalid })
   }
+
   readonly myHandleSubmit = (values: CounterFormData, dispatch:any, props: CounterValueProperties ) => {
-    console.log(values);
-    console.log(dispatch);
-    console.log(props);
     dispatch(CounterAction.createReplaceAction(values.value));
   }
 
