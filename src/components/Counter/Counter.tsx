@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { WithStyles, withStyles, Paper } from 'material-ui';
 import { NumberInput, LabeledButton } from "../ui-shared/";
-import { Theme } from 'material-ui/styles';
+import { Theme, StyleRules } from 'material-ui/styles';
 import { defineMessages } from 'react-intl';
 import { CounterDisplay } from './CounterDisplay';
 
@@ -33,41 +33,43 @@ const messages = defineMessages({
   }
 });
 
-// Styles 
-const styles = {
+type ClassKeys = 'root';
+
+const styles: StyleRules<ClassKeys> = {
   root: {
     backgroundColor: 'red',
   },
-} as React.CSSProperties;
+};
 
 
-export type CounterProps = WithStyles<'root'> & {
+export interface CounterProps {
   value: number;
-  change: (value: number) => void;
-  undo: () => void;
-  redo: () => void;
+  onChange(value: number): void;
+  onUndo(): void;
+  onRedo(): void;
 }
 
 // Main presentation component: without styles
-export class UnstyledCounter extends React.PureComponent<CounterProps> {
+export class UnstyledCounter 
+  extends React.PureComponent<CounterProps & WithStyles<'root'>> 
+{
+  readonly inc = () => this.props.onChange(this.props.value + 1);
+  readonly dec = () => this.props.onChange(this.props.value - 1);
+
   render() {
-    const inc = () => this.props.change(this.props.value + 1);
-    const dec = () => this.props.change(this.props.value - 1);
-    const undo = () => this.props.undo();
-    const redo = () => this.props.redo();
     return (
        <Paper elevation={4}>
         <div>
           <CounterDisplay {...this.props} label={ messages.current_counter_label } />
-          <NumberInput label={messages.counter_label} {...this.props}/>
+          <NumberInput label={messages.counter_label} change={this.props.onChange} value={this.props.value}/>
         </div>
         <div>
-          <LabeledButton label={messages.increment} click={inc} {...this.props}/>
-          <LabeledButton label={messages.decrement} click={dec} {...this.props}/>
+          <LabeledButton label={messages.increment} click={this.inc} {...this.props}/>
+          <LabeledButton label={messages.decrement} click={this.dec} {...this.props}/>
         </div>
         <div>
-           <LabeledButton label={messages.undo} click={undo} {...this.props}/>
-           <LabeledButton label={messages.redo} click={redo} {...this.props}/>
+           <LabeledButton label={messages.undo} click={this.props.onUndo} {...this.props}/>
+           <LabeledButton label={messages.redo} click={this.props.onRedo} {...this.props}/>
         </div>
       </Paper>
     );

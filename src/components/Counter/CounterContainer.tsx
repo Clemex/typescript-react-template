@@ -25,19 +25,21 @@ export type ReplaceActionType = Action<'replace', number>;
 
 /** Creator functions for the different types of actions.*/
 export const CounterActionCreators = {
-  undo: () => ({ type: 'undo' }),
-  redo: () => ({ type: 'redo' }),
-  replace: (payload: number) => ({ type: 'replace', payload }),
+  undo: () => ({ type: 'undo' } as UndoActionType),
+  redo: () => ({ type: 'redo' } as RedoActionType),
+  replace: (payload: number) => ({ type: 'replace', payload } as ReplaceActionType),
 }
 
 /** One of the different supported actions.  */
 export type CounterActionType = UndoActionType | RedoActionType | ReplaceActionType;
-
+    
 /**
  * This is the redux reducer for the counter component. Given an action 
  * it will create a new state from the previous state. 
  */
-export function counterReducer(state: CounterState = new CounterState(), action: CounterActionType): CounterState {
+export function counterReducer(state: CounterState = new CounterState(), 
+    action: CounterActionType): CounterState 
+{
   switch (action.type) {
       case 'replace':
           return state.value !== action.payload ? {
@@ -67,19 +69,23 @@ export function counterReducer(state: CounterState = new CounterState(), action:
  * Notice, we do not specify types, instead we let TypeScript infer the correct type. 
  * This is useful for getting the correct type out of the connect HOC function 
 */
-const mapStateToProps = (state) => ({ 
-  value: state['counter'].value as number 
-});
+function mapStateToProps(state) {
+  return { 
+    value: (state['counter'] as CounterState).value 
+  }
+}
   
 /**
  * Mapping callback properties to an action dispatcher. 
  * Notice, we do not specify the return type, instead we let TypeScript infer the types.
  */
-const mapDispatchToProps = (dispatch) => ({
-  change: (value: number) => dispatch(CounterActionCreators.replace(value)),
-  undo: () => dispatch(CounterActionCreators.undo),
-  redo: () => dispatch(CounterActionCreators.redo),
-});
+function mapDispatchToProps(dispatch) {
+  return { 
+    onChange: (value: number) => dispatch(CounterActionCreators.replace(value)),
+    onUndo: () => dispatch(CounterActionCreators.undo),
+    onRedo: () => dispatch(CounterActionCreators.redo),
+  }
+}
 
 /** 
  * The 'connect' function take a component and returns a high order component. 

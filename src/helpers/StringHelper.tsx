@@ -1,12 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { FormattedMessage } from 'react-intl'
 import { StringOrMessage } from "./Types";
 
 export module StringHelper{
-    /**
-     * Either returns the string, or a properly formatted string if given a message
-     * @param input 
-     */
+    /** Either returns the string, or a properly formatted string if given a message */
     export function FormattedMessageOrText(input?: StringOrMessage): React.ReactNode {
         if (!input) {
             return "";
