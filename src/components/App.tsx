@@ -5,14 +5,13 @@ import { createLogger } from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
-import { createMuiTheme, List, ListItem, ListItemText } from 'material-ui';
+import { createMuiTheme, List, ListItem, ListItemText, Typography } from 'material-ui';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Theme } from 'material-ui/styles';
 
 import { MainPage } from './MainPage';
 import { CounterForm } from './CounterForm';
 import { CounterContainer, counterReducer } from './CounterContainer';
-import { Text } from './Util';
  
 const rootReducer = combineReducers({
     counter: counterReducer,
@@ -63,7 +62,7 @@ export class App extends React.PureComponent<AppProperties, AppState>
   
   render(): React.ReactNode 
   {
-    const header = (<Text type="display2">Welcome to my first TypeScript React/Redux Application</Text>);
+    const header = (<Typography variant="display2">Welcome to my first TypeScript React/Redux Application</Typography>);
 
     const sidebar = (
       <List component="nav">  
