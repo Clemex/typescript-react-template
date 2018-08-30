@@ -2,14 +2,23 @@ import * as React from 'react';
 import { Button } from 'material-ui';
 
 import { StringHelper } from "../../helpers/StringHelper";
-import { ButtonProperties } from "../../helpers/Types";
+import { LabeledButtonProperties } from "../../helpers/Types";
 
-// Labeled button input component
-export class LabeledButton extends React.PureComponent<ButtonProperties> {
-    render(): React.ReactNode {
+/** Simple wrapper around Material UI button that accepts React international messages or plain text labels. */
+export class LabeledButton extends React.PureComponent<LabeledButtonProperties> 
+{
+    render(): React.ReactNode 
+    {
+        const content = this.props.label 
+            ? StringHelper.FormattedMessageOrText(this.props.label)
+            : null;        
         return (
-            <Button onClick={e => this.props.click()}>
-                {StringHelper.FormattedMessageOrText(this.props.label)}
+            <Button 
+                {...this.props}
+                type={this.props.submit? "submit" : "button"}
+            >
+                {content}
+                {this.props.children}
             </Button>
         );
     }
