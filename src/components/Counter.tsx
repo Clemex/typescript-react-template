@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { WithStyles, withStyles, Paper } from 'material-ui';
-import { NumberInput, LabeledButton } from "../ui-shared/";
-import { Theme, StyleRules } from 'material-ui/styles';
+import { NumberInput, LabeledButton } from "./Util";
+import { StyleRules } from 'material-ui/styles';
 import { defineMessages } from 'react-intl';
 import { CounterDisplay } from './CounterDisplay';
 
@@ -41,7 +41,6 @@ const styles: StyleRules<ClassKeys> = {
   },
 };
 
-
 export interface CounterProps {
   value: number;
   onChange(value: number): void;
@@ -49,7 +48,7 @@ export interface CounterProps {
   onRedo(): void;
 }
 
-// Main presentation component: without styles
+// Main presentation component: styles have to be passed explicitly. 
 export class UnstyledCounter 
   extends React.PureComponent<CounterProps & WithStyles<'root'>> 
 {

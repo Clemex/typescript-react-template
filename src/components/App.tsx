@@ -9,10 +9,10 @@ import { createMuiTheme, List, ListItem, ListItemText } from 'material-ui';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Theme } from 'material-ui/styles';
 
-import { MainPage } from '../components/MainPage';
-import { CounterForm } from '../components/CounterForm';
-import { CounterContainer, counterReducer } from '../components/Counter/';
-import { Text, LabeledButton } from '../components/ui-shared/';
+import { MainPage } from './MainPage';
+import { CounterForm } from './CounterForm';
+import { CounterContainer, counterReducer } from './CounterContainer';
+import { Text } from './Util';
  
 const rootReducer = combineReducers({
     counter: counterReducer,
@@ -37,37 +37,40 @@ const darkTheme = createMuiTheme({
   overrides: themeOverrides, 
 });
 
-
 const logger = createLogger({});
 
 // logger must be the last middleware in chain, otherwise it will log thunk and promise, not actual actions 
 const middleware = applyMiddleware(logger);
 
+// This is the globabl redux store 
 const store = createStore(rootReducer, middleware);
 
+// No properties in the main application: nobody passes it anything 
 export type AppProperties = { }
 
-// Theme information is stored in app state. Optionally this could have been added 
+// Theme information is stored in app state. Optionally this could have been added to the store and added it 
 // as its own reducer, but it would have added a lot of additional complexity for a simple string value
 // This is the simplest thing that could have worked 
 export type AppState = { theme: Theme };
 
-
+/** The entry point of the application.  */
 export class App extends React.PureComponent<AppProperties, AppState> 
 {
   state: AppState = { theme: lightTheme }
-  setLightTheme() { this.setState({ theme: lightTheme }); }
-  setDarkTheme() { this.setState({ theme: darkTheme }); }
+  
+  setLightTheme = () => { this.setState({ theme: lightTheme }); }
+  setDarkTheme = () => { this.setState({ theme: darkTheme }); }
+  
   render(): React.ReactNode 
   {
     const header = (<Text type="display2">Welcome to my first TypeScript React/Redux Application</Text>);
 
     const sidebar = (
       <List component="nav">  
-        <ListItem button onClick={e => this.setLightTheme()}>
+        <ListItem button onClick={this.setLightTheme}>
           <ListItemText primary="light"/>
         </ListItem>
-        <ListItem button onClick={e => this.setDarkTheme()}>
+        <ListItem button onClick={this.setDarkTheme}>
           <ListItemText primary="dark"/>
         </ListItem>
       </List>

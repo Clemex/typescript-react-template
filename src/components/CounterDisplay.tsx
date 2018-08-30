@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { WithStyles } from 'material-ui';
 import { StyleRules } from 'material-ui/styles';
-import { Text } from '../ui-shared/';
+import { Text } from './Util'
 
 type ClassKeys = 'root';
 

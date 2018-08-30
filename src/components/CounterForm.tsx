@@ -1,19 +1,33 @@
 import React from 'react';
-import { WithStyles, withStyles, Paper } from 'material-ui';
-import { Theme } from 'material-ui/styles';
-import { defineMessages, FormattedMessage } from 'react-intl';
-import { Field, reduxForm, Form, InjectedFormProps, formValueSelector, SubmitHandler, FormSubmitHandler, DecoratedComponentClass, ConfigProps } from 'redux-form'
+import { defineMessages } from 'react-intl';
+import { Field, reduxForm, Form, InjectedFormProps, FormSubmitHandler, DecoratedComponentClass } from 'redux-form'
 import { connect } from 'react-redux';
+import { NumberInput } from "./Util";
+import {  CounterState, CounterActionCreators } from "./CounterContainer";
 
-import { NumberInput } from "./ui-shared/";
-import { CounterActionType, CounterState, CounterActionCreators } from "./Counter/CounterContainer";
 
-/** Validate function that returns a message if */
-function max100(value): string|null {
-  return value && value > 100 ? "We don't accept values over 100 via the form, due to limited internet bandwidth" : null;
+/** Localizable strings from React-intl. */
+const messages = defineMessages({
+  counter_form_submit: {
+    id: "counter_form_submit",
+    defaultMessage: "submit" ,
+  },
+  counter_form_clear: {
+    id: "counter_form_clear",
+    defaultMessage: "clear"  
+  },
+  counter_form_title: {
+    id: "counter_form_title",
+    defaultMessage: "A Redux-Form with Validation (Max 100)"
+  }
+});
+
+/** Validates that the passed value is a function */
+function isValidValue(value) {
+  return typeof(value) === 'number' && value > 100;
 }
 
-/** A warpper around the Material UI Number input used with Redux-form. */
+/** A wrapper around the Material UI Number input used with Redux-form. */
 const NumberInputForm = (props) => (
   <div>
     <NumberInput
@@ -37,7 +51,7 @@ export interface CounterFormProps {
   onChange(value: number): void;
 }
 
-/** The form component definition.  */
+/** The form component definition. */
 export class BaseCounterForm 
   extends React.PureComponent<CounterFormProps & InjectedFormProps<CounterFormData, CounterFormProps>> 
 {
@@ -57,9 +71,9 @@ export class BaseCounterForm
             name='value'
             component={NumberInputForm}
             label="Input Value"
-            validate={max100}
+            validate={isValidValue}
           />
-          <button type="submit" disabled={ this.props.invalid ||  this.props.pristine || this.props.submitting  }>
+          <button type="submit" disabled={ this.props.invalid || this.props.pristine || this.props.submitting  }>
             Submit
           </button>
           <button type="button" disabled={ this.props.pristine || this.props.submitting} onClick={this.props.reset}>
@@ -71,9 +85,11 @@ export class BaseCounterForm
   }
 }
 
+/** A Redux-ready version of the form. */
 export const ReduxCounterForm: DecoratedComponentClass<CounterFormData, CounterFormProps> 
   = reduxForm<CounterFormData, CounterFormProps>({ form: 'CounterForm' })(BaseCounterForm);
 
+/** Retrieves the value of the  */
 function mapStateToProps(state) { 
   return {
     value: (state.counter as CounterState).value
@@ -86,4 +102,5 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
+/** The wrapper around the redux-connected version of the form. */
 export const CounterForm = connect(mapStateToProps, mapDispatchToProps)(ReduxCounterForm);

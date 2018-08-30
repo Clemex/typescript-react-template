@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Grid, Paper } from 'material-ui';
 
-export type MainPageProperties = {
+/** The three components that make up the main sections of the page */
+export interface MainPageProperties {
     sidebar: React.ReactNode;
     header: React.ReactNode;
     content: React.ReactNode;
 }
 
+/** The main page. */
 export class MainPage extends React.PureComponent<MainPageProperties> {
   render(): React.ReactNode {
      return (
