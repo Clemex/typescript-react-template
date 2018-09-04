@@ -1,14 +1,16 @@
-import * as React from 'react';
-import { Field, reduxForm, Form, InjectedFormProps } from 'redux-form'
+/** 
+ * This module demostrates using Redux-form to encapsulate a form that has its own state separate from the main 
+ * application but still using the redux store. It submits changes to the main application when the input is valid.   
+*/
+import React from 'react';
+import { defineMessages, FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl';
+import { Field, reduxForm, Form, InjectedFormProps, FormSubmitHandler, DecoratedComponentClass } from 'redux-form'
 import { connect } from 'react-redux';
-import { defineMessages } from 'react-intl';
+import { NumberInput } from "./Util";
+import {  CounterState, CounterActionCreators } from "./CounterContainer";
+import { Paper, Typography } from 'material-ui';
 
-import { NumberInputReduxForm, LabeledButton, SubheadingText } from "./ui-shared/";
-import { CounterAction } from "./Counter/CounterAction";
-import { CounterValueProps } from './Counter';
-import { Paper } from 'material-ui';
-
-/** Localizable strings from React-intl. */
+/** Localizable strings defined using react-intl. */
 const messages = defineMessages({
   counter_form_submit: {
     id: "counter_form_submit",
@@ -21,80 +23,107 @@ const messages = defineMessages({
   counter_form_title: {
     id: "counter_form_title",
     defaultMessage: "A Redux-Form with Validation (Max 100)"
+  },
+  input_value : {
+    id: "input_value",
+    defaultMessage: "Input value"
   }
 });
 
-const max100 = value  => value && value > 100 ? "We don't accept values over 100 via the form, due to limited internet bandwidth" : null;
+/** Validates that the passed value is a number and less than or equal to a hundred */
+function isValidValue(value) {
+  return typeof(value) !== 'number' 
+      ? "Only numbers plz" 
+      : value > 100
+        ? "This number is too darn high!"
+        : undefined;
+}
 
-const NumberInputForm = (props) => (
-  <div>
+/** A wrapper around the Material UI Number input used with Redux-form. */
+const NumberInputForm = (props) => (<div>
     <NumberInput
       label={props.label || ''}
       value={props.input.value}
-      change={v => props.input.onChange(v)}
+      change={props.input.onChange}
+      errorText={(props.meta.touched && (props.meta.error && <span>{props.meta.error}</span>) || (props.meta.warning && <span>{props.meta.warning}</span>)) }
       {...props} 
-    />
-    {props.meta.error && <span>{props.meta.error}</span>}
+    />    
   </div>
   );
 
-export interface CounterValueProperties {
-  value: number;
-}
-
+/** The type of the data managed by Redux-form. Not necessarily the same as the properties. */
 export interface CounterFormData {
   value: number;
 }
 
-/** The properties of the Counter form component. */
-export type CounterFormProperties = InjectedFormProps<{}, CounterValueProps>;
+/** The type of the properties exposed to clients of this form. */
+export interface CounterFormProps {
+  value: number;
+}
 
-/** An example of using Redux-form. */
-export class BaseCounterForm extends React.PureComponent<CounterFormProperties> 
+/** 
+ * The form component definition. Notice that we separate the form injected properties and the internationalization context.
+ * Also the form automatically communicates its data to the Redux store. 
+*/
+export class BaseCounterForm 
+  extends React.PureComponent<CounterFormProps & InjectedIntlProps & InjectedFormProps<CounterFormData, CounterFormProps>> 
 {
-  submit({value}, dispatch) {
-    dispatch(CounterAction.createReplaceAction(value));
-  }
-  readonly myHandleSubmit = (values: CounterFormData, dispatch:any, props: CounterValueProperties ) => {
-    console.log(values);
-    console.log(dispatch);
-    console.log(props);
-    dispatch(CounterAction.createReplaceAction(values.value));
-  }
+  /** Called by redux-form when the submit button is pressed. */
+  readonly onSubmit: FormSubmitHandler<CounterFormData, CounterFormProps> =
+    ({value}, dispatch) => {
+      if (value !== undefined)
+        dispatch(CounterActionCreators.replace(value));
+    }
 
-  render(): React.ReactNode {
-    const { pristine, submitting, reset, handleSubmit } = this.props;
+  /** Renders the form in all its glory. */
+  render() {
+    const { 
+      invalid, pristine, submitting, reset, handleSubmit, intl
+    } = this.props;
+    
+    const inputLabel = intl.formatMessage(messages.input_value);
+
     return (
-      <Form onSubmit={handleSubmit(this.myHandleSubmit)}>
-        <div>
-          <Field
-            name='value'
-            component={NumberInputForm}
-            label="Input Value"
-            validate={max100}
-          />
-          <button type="submit" disabled={ this.state.invalid ||  pristine || submitting  }>
-            Submit
-          </button>
-          <button type="button" disabled={pristine || submitting} onClick={reset}>
-            Clear Values
-          </button>
-        </div>
-      </Form>
+      <Paper elevation={4}>
+        <Typography variant="subheading">
+          <FormattedMessage {...messages.counter_form_title}/>
+        </Typography>
+        <Form onSubmit={handleSubmit(this.onSubmit)}>
+          <div>
+            <Field
+              name='value'
+              component={NumberInputForm}
+              label={inputLabel}
+              validate={isValidValue}         
+            />
+            <div>
+            <button type="submit" disabled={ invalid || pristine || submitting  }>
+              <FormattedMessage {...messages.counter_form_submit} />
+            </button>
+            <button type="button" disabled={ pristine || submitting} onClick={reset}>
+              <FormattedMessage {...messages.counter_form_clear} />
+            </button>
+            </div>
+          </div>
+        </Form>
+      </Paper>
     );
   }
 }
 
-/** Create a function for creating a Redux form, along with the label used for storing the form data,  */
-export const createCounterForm = reduxForm<{}, Partial<CounterValueProps>>({ form: 'CounterForm' });
+/** Add the intl context which is needed explicitly. */
+export const CounterFormWithIntl = injectIntl(BaseCounterForm);
 
-/** Call the create Counter Form higher-order component to actually create the component.  */
-export const UnconnectedCounterForm = createCounterForm(BaseCounterForm);
+/** A Redux-ready version of the form. */
+export const ReduxCounterForm: DecoratedComponentClass<CounterFormData, CounterFormProps> 
+  = reduxForm<CounterFormData, CounterFormProps>({ form: 'CounterForm', touchOnChange: true })(CounterFormWithIntl);
 
-/** The function for getting the current counter state from the store. */
-export const mapStateToProps = (state: any): Partial<CounterValueProps> => ({
-   value: state.counter.value as number 
-});
+/** Retrieves the value of the from the redux store. */
+function mapStateToProps(state) { 
+  return {
+    value: (state.counter as CounterState).value
+  } 
+};
 
-/** Create the counter  */
-export const CounterForm = connect(mapStateToProps)(UnconnectedCounterForm);
+/** The wrapper around the redux-connected version of the form. */
+export const CounterForm = connect(mapStateToProps)(ReduxCounterForm);
