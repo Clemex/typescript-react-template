@@ -4,7 +4,7 @@ This project is a simple template project developed by [Clemex Technologies](htt
 
 The project contains the source code for a simple counter application that demonstrates the usage of React, Redux, Redux-Form, Redux-Logger, Material-UI, and React-UI all written in TypeScript. This was inspired by [the Counter project by Leyka](https://github.com/Leyka/learning-react/tree/master/react-redux) a simple app which increments or decrements a counter using React/Redux which in turn was based on [the React/Redux counter example](https://github.com/reactjs/redux/tree/master/examples/counter/src).
 
-[Try it here](https://clemex.github.io/typescript-react-template/).
+You can [try out this sample project here](https://clemex.github.io/typescript-react-template/).
 
 # Motivation
 
