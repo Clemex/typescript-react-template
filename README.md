@@ -4,13 +4,15 @@ This project is a simple template project developed by [Clemex Technologies](htt
 
 The project contains the source code for a simple counter application that demonstrates the usage of React, Redux, Redux-Form, Redux-Logger, Material-UI, and React-UI all written in TypeScript. This was inspired by [the Counter project by Leyka](https://github.com/Leyka/learning-react/tree/master/react-redux) a simple app which increments or decrements a counter using React/Redux which in turn was based on [the React/Redux counter example](https://github.com/reactjs/redux/tree/master/examples/counter/src).
 
+[Try it here](https://clemex.github.io/typescript-react-template/).
+
 # Motivation
 
 [React](typescriptlang.org) is a very powerful UI creation framework for JavaScript applications, and [Redux](https://redux.js.org/) is a useful and simple state management system for JavaScript applications. 
 
-At Clemex we have found that React and Redux works very well with [TypeScript](typescriptlang.org), but it is not yet obvious what libraries work best with this stack for production code, and what the best practices are for producing scalable code. This project has served as a test bed for us when developing new features, and experimenting with different techniques. 
+At [Clemex](https://github.com/Clemex) we have found that React and Redux works very well with [TypeScript](typescriptlang.org), but it is not yet obvious what libraries work best with this stack for production code, and what the best practices are for producing scalable code. This project has served as a test bed for us when developing new features, and experimenting with different techniques. 
 
-There are a couple of pre-existing React/Redux/TypeScript starters and template projects such as the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) we started from, but we wanted to create a starter kit that more closely resembled a real production development stack, and that contained a template example for new programmers onboarding on our team. 
+There are a couple of pre-existing React/Redux/TypeScript starters and template projects such as the [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter) we started from, but we wanted to create a starter kit that more closely resembled our development stack and that would make it easier for new team members to onboard.  
 
 # Building and Running the Project
 
