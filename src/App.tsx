@@ -136,20 +136,7 @@ export class App extends React.PureComponent<AppProperties, AppState>
           <ListItem button onClick={this.setDarkTheme}>
             <ListItemText primary="dark"/>
           </ListItem>
-        </Paper>);
-    /*
-    const sidebar = (
-      <Grid container spacing={8}>
-        <Grid item>
-          <ListItem button onClick={this.setLightTheme}>
-            <ListItemText primary="light"/>
-          </ListItem>
-          <ListItem button onClick={this.setDarkTheme}>
-            <ListItemText primary="dark"/>
-          </ListItem>
-        </Grid>
-      </Grid>
-      );*/
+        </Paper>);   
 
     const main = (
       <Grid container spacing={8}>
