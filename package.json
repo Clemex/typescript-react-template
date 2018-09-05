@@ -1,7 +1,7 @@
 {
   "main": "src/index.tsx",
   "name": "template-app",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "license": "MIT",
   "repository": "github:Clemex/typescript-react-template",
